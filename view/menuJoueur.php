@@ -19,10 +19,16 @@
                         <a href="../view/pageAccueil.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="../view/pageInscription.php">Inscription</a>
+                        <a href="#">Pronostics</a>
                     </li>
                     <li>
-                        <a href="../view/pageConnexion.php">Connexion</a>
+                        <a href="#">Résultats</a>
+                    </li>
+					<li>
+                        <a href="#">Profil</a>
+                    </li>
+					<li>
+                        <a href="#">Déconnexion</a>
                     </li>
                 </ul>
             </div>
