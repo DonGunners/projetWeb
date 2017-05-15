@@ -27,7 +27,6 @@
 
 <body id="page-top" class="index">
 
-
 	<?php include("menu.php"); ?>
 
 

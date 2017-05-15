@@ -37,7 +37,7 @@
                 <div class="col-lg-12 text-center">
                     <h2>Inscription</h2>
                     <hr class="star-primary">
-					<form method="post" action="Connexion.php">
+					<form method="post" action="../controller/connexionJoueur.controller.php">
 						<p>
 							<label for="pseudo">Votre pseudo :</label><br />
 							<input type="text" name="pseudo" id="pseudo" />
