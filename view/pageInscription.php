@@ -27,21 +27,44 @@
 
 <body id="page-top" class="index">
 
+
 	<?php include("menu.php"); ?>
+
 
 	<section id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contenu</h2>
+                    <h2>Inscription</h2>
                     <hr class="star-primary">
+					<form method="post" action="inscription.php">
+						<p>
+							<label for="pseudo">Votre pseudo :</label><br />
+							<input type="text" name="pseudo" id="pseudo" />
+       
+							<br />
+							<label for="password">Votre mot de passe :</label><br />
+							<input type="password" name="password" id="password" />
+       
+							<br />
+							<label for="password2">Confirmation mot de passe :</label><br />
+							<input type="password" name="password2" id="password2" />
+							
+							<br />
+							<label for="email">Email :</label><br />
+							<input type="email" name="email" id="email" /><br />
+							<br />
+							
+							<input type="submit" value="Confirmer" />
+						</p>
+					</form>
                 </div>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-	
+
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 
