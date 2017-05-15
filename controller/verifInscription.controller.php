@@ -28,7 +28,7 @@ if(!isset($_COOKIE["token"])){
 				//On vérifie que l'étudiant n'est pas déjà dans la base de données
 				if(!$id>0){
 			        ajoutJoueur($pseudo,$password,$email);
-				    header('Location:pageConnexion.controller.php');
+				    header('Location:../view/pageConfirmationInscription.php');
 				}else{
 				    echo 'ERREUR : un compte pour cet étudiant existe déjà';
 				}

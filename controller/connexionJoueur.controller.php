@@ -1,4 +1,5 @@
 <?php
+  require_once('../vendor/autoload.php');
   require_once('../model/joueur.php');
   require_once('../model/connexionBD.php');
   use \Firebase\JWT\JWT;
@@ -22,7 +23,7 @@
                 $id=connexionJoueur($pseudo,$password);
 
                 //On vérifie que le login existe dans la table et que les informations soient exactes. (BD.password==passwd && BD.email==email)
-                if ($id>0){
+                if (!empty($id)){
                     //On définit le token contenant les différentes informations.
                     $token = array(
                         "iss" => $_SERVER['HTTP_HOST'],
@@ -41,12 +42,12 @@
                 }
                 else{
                   echo ("ERREUR : tu as rentré un mauvais login/mot de passe");
-                  include('../view/pageConnexion.php');
+                  include('../controller/pageConnexion.controller.php');
                 }
             }//endif isset(variables)
             else {
               // Cas où la personne passe directement ici par l'url et n'est pas connecté
-              header('Location:../view/pageConnexion.php');
+              header('Location:../controller/pageConnexion.controller.php');
             }
     } //endif !isset(COOKIE)
     else {
