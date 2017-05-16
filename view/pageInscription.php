@@ -27,8 +27,12 @@
 
 <body id="page-top" class="index">
 
-	<?php include("menu.php"); ?>
-
+	<?php 
+	if(isset($menu)){
+		include($menu);
+	}else{
+		include('menu.php');
+	}?>
 
 	<section id="portfolio">
         <div class="container">

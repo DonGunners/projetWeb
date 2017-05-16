@@ -38,10 +38,9 @@
 
                     //On conserve le token dans un cookie pour faciliter le passage des paramètres d'une page à une autre sans devoir utiliser des posts entre chaque page.
                     setcookie("token", $jwt, time()+$validity_time,"/", null, false, true);
-                    header('Location:pageAccueil.controller.php');
+                    header('Location:../controller/pageAccueil.controller.php');
                 }
                 else{
-                  echo ("ERREUR : tu as rentré un mauvais login/mot de passe");
                   include('../controller/pageConnexion.controller.php');
                 }
             }//endif isset(variables)
@@ -52,6 +51,6 @@
     } //endif !isset(COOKIE)
     else {
         // Cas où la personne est déjà connecté
-        header('Location:redirection.php');
+        header('Location:../controller/redirection.php');
     }
 ?>

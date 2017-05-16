@@ -59,7 +59,7 @@
 							echo "<td><img src=\"../image/$donnees[image_competition]\" style=\"width:20px;height:20px;\"> </td>";
 							echo "<td> $donnees[nom_competition] </td>";
 							echo "<td><a href=\"../controller/modifierCompetition.controller.php?id=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-primary\">Modifier</button></a></td>";
-							echo "<td><a href=\"../controller/supprimerCompetition.controller.php?id=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
+							echo "<td><a href=\"../controller/supprimerCompetition.controller.php?id=$donnees[id_competition]&nom=$donnees[nom_competition]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
 							echo "</tr>";
 					}						
 					?>

@@ -23,19 +23,20 @@
 	  if (verificationToken($decoded_array)){
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
+		  $menu="menuJoueur.php";
           Header('Location:../controller/redirection.php');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-		  $competition=getCompetition($_GET['id']);
-          include('../view/modifierCompetition.php');
+		  $listeCompetition=listeCompetition();
+          include('../view/supprimerCompetition.php');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";
-            Header('Location:../controller/redirection.php');		
+          Header('Location:../controller/redirection.php');	
 		}
 	  }else{
-            Header('Location:../controller/redirection.php');
+          Header('Location:../controller/redirection.php');
 	  }
     }
 ?>

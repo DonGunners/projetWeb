@@ -35,8 +35,8 @@ if(isset($_COOKIE["token"])){
 			}
         }else{
           // On le redirige vers la page admin
-		  $menu="menuAdmin.php";
-          include('../view/pageAccueil.php');			
+		  $menu="menu.php";
+          include('../controller/redirection.php');			
 		}
 	  }else{
 	header('Location:../controller/redirection.php');

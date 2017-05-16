@@ -11,9 +11,10 @@
     if(!isset($_COOKIE["token"])){
 			$menu="menu.php";
             // On le redirige vers la page d'accueil
-            include('../view/pageConnexion.php');
+            include('Location:../view/pageConfirmationInscription.php');
     }
     else{
-		    Header('Location:../controller/redirection.php');
+		
+            Header('Location:../controller/redirection.php');
     }
 ?>

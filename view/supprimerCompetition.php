@@ -11,6 +11,8 @@
 
     <title>Projet Web</title>
 
+    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
+	
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -38,27 +40,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Inscription</h2>
+                    <h2>Formulaire modification</h2>
                     <hr class="star-primary">
-					<form method="post" action="../controller/connexionJoueur.controller.php">
-						<p>
-							<label for="pseudo">Votre pseudo :</label><br />
-							<input type="text" name="pseudo" id="pseudo" />
-       
-							<br />
-							<label for="password">Votre mot de passe :</label><br />
-							<input type="password" name="password" id="password" />
-							<br /><br />
-							<input type="submit" value="Connexion" />
-						</p>
-					</form>
-                </div>
+					<p>Voulez-vous vraiment supprimer la compétition : <br />
+					<?php echo $_GET['nom'];?> ?</p>
+					<a href="../controller/pageConfirmationSuppressionCompetition.controller.php?id=<?php echo $_GET['id'];?>"><button type="button" class="btn btn-primary">Oui</button></a>
+					<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Non</button></a>
+				</div>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-
+	
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 

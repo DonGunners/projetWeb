@@ -12,7 +12,7 @@
     if(!isset($_COOKIE["token"])){
 			$menu="menu.php";
             // On le redirige vers la page d'accueil
-            include('../view/pageAccueil.php');
+            Header('Location:../controller/redirection.php');
     }
     else{
 		
@@ -24,7 +24,7 @@
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
 		  $menu="menuJoueur.php";
-          include('../controller/redirection.php');
+          Header('Location:../controller/redirection.php');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
@@ -32,11 +32,11 @@
           include('../view/adminCompetition.php');
         }else{
           // On le redirige vers la page admin
-		  $menu="menuAdmin.php";
-          include('../controller/redirection.php');			
+		  $menu="menu.php";
+          Header('Location:../controller/redirection.php');	
 		}
 	  }else{
-		include('../controller/redirection.php');
+          Header('Location:../controller/redirection.php');
 	  }
     }
 ?>
