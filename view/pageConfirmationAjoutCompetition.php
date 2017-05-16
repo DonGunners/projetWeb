@@ -11,8 +11,6 @@
 
     <title>Projet Web</title>
 
-    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
-	
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,6 +27,7 @@
 
 <body id="page-top" class="index">
 
+
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -36,44 +35,17 @@
 		include('menu.php');
 	}?>
 
+
 	<section id="portfolio">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Gestion Compétitions</h2>
-                    <hr class="star-primary">
-<p>					<a href="../controller/ajouterCompetition.controller.php"><button type="button" class="btn btn-primary">Ajouter une compétition</button></a>
-				<div class="panel panel-success">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Nom compétition</th>
-								<th>Phases</th>
-								<th>Modifier</th>
-								<th>Supprimer</th>
-							</tr>
-						</thead>
-					<?php
-					while($donnees=$listeCompetition->fetch()){
-						    echo "<tr>";
-							echo "<td><img src=\"../image/$donnees[image_competition]\" style=\"width:20px;height:20px;\"> </td>";
-							echo "<td> $donnees[nom_competition] </td>";
-							echo "<td><a href=\"../controller/adminPhase.controller.php?id=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-primary\">Phases</button></a></td>";
-							echo "<td><a href=\"../controller/modifierCompetition.controller.php?id=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-							echo "<td><a href=\"../controller/supprimerCompetition.controller.php?id=$donnees[id_competition]&nom=$donnees[nom_competition]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
-							echo "</tr>";
-					}						
-					?>
-					</table>
-				</div>
-				                </div>
+                <p>Ajout effectué !</p>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-	
+
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 

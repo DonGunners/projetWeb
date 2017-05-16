@@ -40,34 +40,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Gestion Compétitions</h2>
+                    <h2>Formulaire ajout</h2>
                     <hr class="star-primary">
-<p>					<a href="../controller/ajouterCompetition.controller.php"><button type="button" class="btn btn-primary">Ajouter une compétition</button></a>
-				<div class="panel panel-success">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Nom compétition</th>
-								<th>Phases</th>
-								<th>Modifier</th>
-								<th>Supprimer</th>
-							</tr>
-						</thead>
-					<?php
-					while($donnees=$listeCompetition->fetch()){
-						    echo "<tr>";
-							echo "<td><img src=\"../image/$donnees[image_competition]\" style=\"width:20px;height:20px;\"> </td>";
-							echo "<td> $donnees[nom_competition] </td>";
-							echo "<td><a href=\"../controller/adminPhase.controller.php?id=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-primary\">Phases</button></a></td>";
-							echo "<td><a href=\"../controller/modifierCompetition.controller.php?id=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-							echo "<td><a href=\"../controller/supprimerCompetition.controller.php?id=$donnees[id_competition]&nom=$donnees[nom_competition]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
-							echo "</tr>";
-					}						
-					?>
-					</table>
+					<form method="post" action="../controller/pageConfirmationAjoutCompetition.controller.php">
+						<p>
+							<label for="pseudo">Nom compétition :</label><br />
+							<input type="text" name="nom" id="nom" />
+							<br />
+							<br />
+							<label for="password">Image compétition :</label><br />
+							<input type="text" name="image" id="image" />
+
+							<br /><br />
+							<input type="submit" value="Confirmer" />
+						</p>
+					</form>
 				</div>
-				                </div>
             </div>
         </div>
     </section>
