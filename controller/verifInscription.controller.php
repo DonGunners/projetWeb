@@ -24,7 +24,7 @@ if(!isset($_COOKIE["token"])){
 			if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 		      	//On crypte le mot de passe avec un "grain de sel"
           		$password = crypt($password,$keyCryptage);
-          		$id=existeJoueur($pseudo);
+          		$id=existeJoueur($pseudo,$email);
 				//On vérifie que l'étudiant n'est pas déjà dans la base de données
 				if(!$id>0){
 			        ajoutJoueur($pseudo,$password,$email);

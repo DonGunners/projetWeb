@@ -25,11 +25,14 @@
 		  $menu="menuJoueur.php";
           include('../view/pageAccueil.php');
         }
-        else{
-          // On le redirige vers la page admin
+        else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
           include('../view/pageAccueil.php');
-        }
+        }else{
+          // On le redirige vers la page admin
+		  $menu="menu.php";
+          include('../view/pageAccueil.php');			
+		}
 	  }else{
 		include('../view/pageAccueil.php');
 	  }

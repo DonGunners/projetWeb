@@ -23,13 +23,13 @@
                 $id=connexionJoueur($pseudo,$password);
 
                 //On vérifie que le login existe dans la table et que les informations soient exactes. (BD.password==passwd && BD.email==email)
-                if (!empty($id)){
+                if (!empty($id[0])){
                     //On définit le token contenant les différentes informations.
                     $token = array(
                         "iss" => $_SERVER['HTTP_HOST'],
                         "exp" => time() + $validity_time,
-                        "id" => $id,
-                        "role" => "joueur"
+                        "id" => $id[0],
+                        "role" => $id[1]
                     );
 
                     //On encode le token en JWT
