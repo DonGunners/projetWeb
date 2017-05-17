@@ -27,6 +27,10 @@
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
+			$nom = htmlspecialchars ($_POST['nom']);
+			$image = htmlspecialchars ($_POST['image']);
+			$id = htmlspecialchars ($_POST['id']);
+			modifierCompetition($id,$nom,$image);
           include('../view/pageConfirmationModificationCompetition.php');
         }else{
           // On le redirige vers la page admin

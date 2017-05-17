@@ -28,7 +28,7 @@
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-          include('../view/supprimerCompetition.php');
+          include('../view/supprimerPhase.php');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";

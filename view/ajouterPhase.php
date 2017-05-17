@@ -11,6 +11,8 @@
 
     <title>Projet Web</title>
 
+    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
+	
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -27,7 +29,6 @@
 
 <body id="page-top" class="index">
 
-
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -35,19 +36,31 @@
 		include('menu.php');
 	}?>
 
-
 	<section id="portfolio">
         <div class="container">
             <div class="row">
-                <p>Modification effectuée !</p>
-				<br />
-				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
+                <div class="col-lg-12 text-center">
+                    <h2>Formulaire ajout</h2>
+                    <hr class="star-primary">
+					<form method="post" action="../controller/pageConfirmationAjoutPhase.controller.php?idC=<?php echo $_GET['idC']; ?>">
+						<p>
+							<label for="pseudo">Nom phase :</label><br />
+							<input type="text" name="nom" id="nom" />
+							<br />
+							<br />
+							<input type="hidden" name="id_competition" id="id_competition" value="<?php echo $_GET['idC']; ?>"/>
+
+							<br /><br />
+							<input type="submit" value="Confirmer" />
+						</p>
+					</form>
+				</div>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-
+	
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 

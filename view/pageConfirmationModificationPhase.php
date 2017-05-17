@@ -41,7 +41,7 @@
             <div class="row">
                 <p>Modification effectuée !</p>
 				<br />
-				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
+				<a href="../controller/adminPhase.controller.php?idC=<?php echo $_GET['idC']; ?>"><button type="button" class="btn btn-primary">Retour</button></a>
             </div>
         </div>
     </section>

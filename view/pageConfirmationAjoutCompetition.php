@@ -40,6 +40,8 @@
         <div class="container">
             <div class="row">
                 <p>Ajout effectué !</p>
+				<br />
+				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
             </div>
         </div>
     </section>

@@ -44,7 +44,7 @@
                     <hr class="star-primary">
 					<p>Voulez-vous vraiment supprimer la compétition : <br />
 					<?php echo $_GET['nom'];?> ?</p>
-					<a href="../controller/pageConfirmationSuppressionCompetition.controller.php?id=<?php echo $_GET['id'];?>"><button type="button" class="btn btn-primary">Oui</button></a>
+					<a href="../controller/pageConfirmationSuppressionCompetition.controller.php?idC=<?php echo $_GET['idC'];?>"><button type="button" class="btn btn-primary">Oui</button></a>
 					<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Non</button></a>
 				</div>
             </div>

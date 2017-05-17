@@ -42,7 +42,7 @@
                 <div class="col-lg-12 text-center">
                     <h2>Formulaire modification</h2>
                     <hr class="star-primary">
-					<form method="post" action="../controller/verifModificationCompetition.controller.php">
+					<form method="post" action="../controller/pageConfirmationModificationCompetition.controller.php">
 						<p>
 							<label for="pseudo">Nom compétition :</label><br />
 							<input type="text" name="nom" id="nom" value="<?php echo $competition[0]['nom_competition'];?>"/>

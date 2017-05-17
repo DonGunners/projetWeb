@@ -38,6 +38,8 @@
         <div class="container">
             <div class="row">
                 <p>Inscription validée !</p>
+				<br />
+				<a href="../controller/pageAccueil.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
             </div>
         </div>
     </section>

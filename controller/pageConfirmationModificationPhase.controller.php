@@ -1,8 +1,8 @@
 <?php
   require_once('../vendor/autoload.php');
   require_once('../model/token.php');
-  require_once('../model/competition.php');
   require_once('../model/connexionBD.php');
+  require_once('../model/phase.php');
   use \Firebase\JWT\JWT;
 
   //TODO: mettre dans un fichier .env
@@ -24,18 +24,21 @@
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
 		  $menu="menuJoueur.php";
-          Header('Location:../controller/redirection.php');
+            Header('Location:../controller/redirection.php');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-          include('../view/supprimerCompetition.php');
+		$nom = htmlspecialchars ($_POST['nom']);
+		$id = htmlspecialchars ($_POST['id']);
+		modifierPhase($id,$nom);
+          include('../view/pageConfirmationModificationPhase.php');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";
-          Header('Location:../controller/redirection.php');	
+            Header('Location:../controller/redirection.php');			
 		}
 	  }else{
-          Header('Location:../controller/redirection.php');
+            Header('Location:../controller/redirection.php');
 	  }
     }
 ?>

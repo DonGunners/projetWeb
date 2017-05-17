@@ -11,6 +11,8 @@
 
     <title>Projet Web</title>
 
+    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
+	
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -27,7 +29,6 @@
 
 <body id="page-top" class="index">
 
-
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -35,19 +36,49 @@
 		include('menu.php');
 	}?>
 
-
 	<section id="portfolio">
         <div class="container">
             <div class="row">
-                <p>Modification effectuée !</p>
-				<br />
-				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
+                <div class="col-lg-12 text-center">
+                    <h2>Gestion Matchs</h2>
+                    <hr class="star-primary">
+					<a href="../controller/ajouterPhase.controller.php?idC=<?php echo $_GET['idC']; ?>&idP=<?php echo $_GET['idP']; ?>"><button type="button" class="btn btn-primary">Ajouter un match</button></a>
+				<br /><br />
+				<div class="panel panel-success">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Date Match</th>
+								<th>Equipe Domicile</th>
+								<th>Equipe Extérieur</th>
+								<th>cote 1</th>
+								<th>cote N</th>
+								<th>cote 2</th>
+								<th>Résultat</th>
+							</tr>
+						</thead>
+					<?php
+					while($donnees=$listeMatchs->fetch()){
+						    echo "<tr>";
+							echo "<td> $donnees[date_match] </td>";
+							echo "<td> $donnees[nom_equipe1] </td>";
+							echo "<td> $donnees[nom_equipe2] </td>";
+							echo "<td> $donnees[cote_equipe1] </td>";
+							echo "<td> $donnees[cote_match_nul] </td>";
+							echo "<td> $donnees[cote_equipe2] </td>";
+							echo "<td> $donnees[resultat_match] </td>";
+							echo "</tr>";
+					}						
+					?>
+					</table>
+				</div>
+				                </div>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-
+	
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 

@@ -1,7 +1,7 @@
 <?php
   require_once('../vendor/autoload.php');
   require_once('../model/token.php');
-  require_once('../model/competition.php');
+  require_once('../model/phase.php');
   require_once('../model/connexionBD.php');
   use \Firebase\JWT\JWT;
 
@@ -28,7 +28,8 @@
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-          include('../view/supprimerCompetition.php');
+		  supprimerPhase($_GET['idP']);
+          include('../view/pageConfirmationSuppressionPhase.php');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";

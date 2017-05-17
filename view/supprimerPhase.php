@@ -11,6 +11,8 @@
 
     <title>Projet Web</title>
 
+    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
+	
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -27,7 +29,6 @@
 
 <body id="page-top" class="index">
 
-
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -35,19 +36,23 @@
 		include('menu.php');
 	}?>
 
-
 	<section id="portfolio">
         <div class="container">
             <div class="row">
-                <p>Modification effectuée !</p>
-				<br />
-				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
+                <div class="col-lg-12 text-center">
+                    <h2>Formulaire modification</h2>
+                    <hr class="star-primary">
+					<p>Voulez-vous vraiment supprimer la phase : <br />
+					<?php echo $_GET['nom'];?> ?</p>
+					<a href="../controller/pageConfirmationSuppressionPhase.controller.php?idC=<?php echo $_GET['idC'];?>&idP=<?php echo $_GET['idP'];?>"><button type="button" class="btn btn-primary">Oui</button></a>
+					<a href="../controller/adminPhase.controller.php?idC=<?php echo $_GET['idC'];?>"><button type="button" class="btn btn-primary">Non</button></a>
+				</div>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-
+	
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 

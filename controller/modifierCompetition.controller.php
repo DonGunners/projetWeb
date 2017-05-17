@@ -27,7 +27,7 @@
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-		  $competition=getCompetition($_GET['id']);
+		  $competition=getCompetition($_GET['idC']);
           include('../view/modifierCompetition.php');
         }else{
           // On le redirige vers la page admin

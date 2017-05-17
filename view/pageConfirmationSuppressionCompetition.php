@@ -39,11 +39,9 @@
 	<section id="portfolio">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Gestion Compétitions</h2>
-                    <hr class="star-primary">
-					<p>suppression effectuée</p>
-				</div>
+				<p>suppression effectuée</p>
+				<br />
+				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
             </div>
         </div>
     </section>
