@@ -42,9 +42,8 @@
                 <div class="col-lg-12 text-center">
                     <h2>Gestion Matchs</h2>
                     <hr class="star-primary">
-					<a href="../controller/ajouterPhase.controller.php?idC=<?php echo $_GET['idC']; ?>&idP=<?php echo $_GET['idP']; ?>"><button type="button" class="btn btn-primary">Ajouter un match</button></a>
-				<br /><br />
-				<div class="panel panel-success">
+
+				<div class="panel panel-success" id="tableGestion">
 					<table class="table table-bordered">
 						<thead>
 							<tr>
@@ -55,6 +54,8 @@
 								<th>cote N</th>
 								<th>cote 2</th>
 								<th>Résultat</th>
+								<th>Modifier</th>
+								<th>Supprimer</th>
 							</tr>
 						</thead>
 					<?php
@@ -67,12 +68,30 @@
 							echo "<td> $donnees[cote_match_nul] </td>";
 							echo "<td> $donnees[cote_equipe2] </td>";
 							echo "<td> $donnees[resultat_match] </td>";
+							echo "<td><a href=\"../controller/modifierMatch.controller.php?idM=$donnees[id_match]&idP=";
+							echo $_GET['idP'];
+							echo "\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
+							echo "<td><a href=\"../controller/supprimerMatch.controller.php?idM=$donnees[id_match]&idP=";
+							echo $_GET['idP'];
+							echo "\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
 							echo "</tr>";
 					}						
 					?>
+					<form method="post" action="../controller/pageConfirmationAjoutMatch.controller.php?idC=<?php echo $_GET['idC']; ?>&idP=<?php echo $_GET['idP']; ?>">
+						<td><input type="datetime" name="date" id="date" value="2004-10-19 10:23:54"/></td>
+						<td><input type="text" name="nom1" id="nom1" /></td>
+						<td><input type="text" name="nom2" id="nom2" /></td>
+						<td><input type="text" name="cote1" id="cote1" size="4"/></td>
+						<td><input type="text" name="coteNul" id="coteN" size="4"/></td>
+						<td><input type="text" name="cote2" id="cote2" size="4"/></td>
+						<td><input type="submit" value="Confirmer" /></td>
+						<td></td>
+						<td></td>
+						<input type="hidden" name="id_phase" id="id_phase" value="<?php echo $_GET['idP']; ?>"/>
+					</form>
 					</table>
 				</div>
-				                </div>
+			</div>
             </div>
         </div>
     </section>
