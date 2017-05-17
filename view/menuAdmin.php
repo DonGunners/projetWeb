@@ -22,7 +22,7 @@
                         <a href="../controller/adminCompetition.controller.php">Compétitions</a>
                     </li>
 					<li>
-                        <a href="#">Résultats</a>
+                        <a href="../controller/gestionResultats.controller.php">Résultats</a>
                     </li>
                     <li>
                         <a href="#">Admins</a>

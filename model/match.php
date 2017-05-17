@@ -80,5 +80,19 @@ function supprimerMatch($id){
 		}
 }
 
+function listeMatchEnCours(){
+	
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT m.id_match,c.nom_competition, p.libelle_phase, concat(m.nom_equipe1,\' - \',m.nom_equipe2) AS match, m.date_match, m.nom_equipe1, m.nom_equipe2, m.resultat_match FROM competition c, phase p, match m WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase ORDER BY m.date_match');
+			$req->execute();
+			$liste=$req;
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+		return $liste;
+}
+
 
 ?>
