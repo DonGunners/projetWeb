@@ -39,10 +39,10 @@
 	<section id="portfolio">
         <div class="container">
             <div class="row">
+				<a href="../controller/adminPhase.controller.php?idC=<?php echo $_GET['idC'];?>"><button type="button" class="btn btn-primary">Retour</button></a>
                 <div class="col-lg-12 text-center">
                     <h2>Gestion Matchs</h2>
                     <hr class="star-primary">
-
 				<div class="panel panel-success" id="tableGestion">
 					<table class="table table-bordered">
 						<thead>
@@ -70,9 +70,13 @@
 							echo "<td> $donnees[resultat_match] </td>";
 							echo "<td><a href=\"../controller/modifierMatch.controller.php?idM=$donnees[id_match]&idP=";
 							echo $_GET['idP'];
+							echo "&idC=";
+							echo $_GET['idC'];
 							echo "\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
 							echo "<td><a href=\"../controller/supprimerMatch.controller.php?idM=$donnees[id_match]&idP=";
 							echo $_GET['idP'];
+							echo "&idC=";
+							echo $_GET['idC'];
 							echo "\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
 							echo "</tr>";
 					}						

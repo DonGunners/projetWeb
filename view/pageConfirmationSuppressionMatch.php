@@ -39,41 +39,9 @@
 	<section id="portfolio">
         <div class="container">
             <div class="row">
-				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
-                <div class="col-lg-12 text-center">
-                    <h2>Gestion Phases</h2>
-                    <hr class="star-primary">
-					<a href="../controller/ajouterPhase.controller.php?idC=<?php echo $_GET['idC']; ?>"><button type="button" class="btn btn-primary">Ajouter une phase</button></a>
-				<br /><br />
-				<div class="panel panel-success">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>Phase</th>
-								<th>Matchs</th>
-								<th>Modifier</th>
-								<th>Supprimer</th>
-							</tr>
-						</thead>
-					<?php
-					while($donnees=$listePhase->fetch()){
-						    echo "<tr>";
-							echo "<td> $donnees[libelle_phase] </td>";
-							echo "<td><a href=\"../controller/adminMatch.controller.php?idP=$donnees[id_phase]&idC=";
-							echo $_GET['idC'];
-							echo "\"><button type=\"button\" class=\"btn btn-primary\">Matchs</button></a></td>";
-							echo "<td><a href=\"../controller/modifierPhase.controller.php?idP=$donnees[id_phase]&idC=";
-							echo $_GET['idC'];
-							echo "\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-							echo "<td><a href=\"../controller/supprimerPhase.controller.php?idP=$donnees[id_phase]&nom=$donnees[libelle_phase]&idC=";
-							echo $_GET['idC'];
-							echo "\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
-							echo "</tr>";
-					}						
-					?>
-					</table>
-				</div>
-				                </div>
+				<p>suppression effectuée</p>
+				<br />
+				<a href="../controller/adminMatch.controller.php?idC=<?php echo $_GET['idC'];?>&idP=<?php echo $_GET['idP'];?>"><button type="button" class="btn btn-primary">Retour</button></a>
             </div>
         </div>
     </section>
