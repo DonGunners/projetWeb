@@ -84,7 +84,7 @@ function listeMatchEnCours(){
 	
 		global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT m.id_match,c.nom_competition, p.libelle_phase, concat(m.nom_equipe1,\' - \',m.nom_equipe2) AS match, m.date_match, m.nom_equipe1, m.nom_equipe2, m.resultat_match FROM competition c, phase p, match m WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase ORDER BY m.date_match');
+			$req=$pdo->prepare('SELECT m.id_match,c.nom_competition, p.libelle_phase, concat(m.nom_equipe1,\' - \',m.nom_equipe2) AS match, m.date_match, m.nom_equipe1, m.nom_equipe2, m.resultat_match FROM competition c, phase p, match m WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.resultat_match IS NULL ORDER BY m.date_match');
 			$req->execute();
 			$liste=$req;
 		}catch(PDOException $e){
@@ -94,5 +94,16 @@ function listeMatchEnCours(){
 		return $liste;
 }
 
+function setResultat($id,$res){
+	
+		global $pdo;
+		try{
+			$req=$pdo->prepare('UPDATE match SET resultat_match=? WHERE id_match=?');
+			$req->execute(array($res,$id));
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+}
 
 ?>

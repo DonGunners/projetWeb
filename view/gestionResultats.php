@@ -63,8 +63,8 @@
 							echo "<td>$donnees[libelle_phase]</td>";
 							echo "<td>$donnees[match]</td>";
 							echo "<td>$donnees[date_match]</td>";
-							echo "<td><select name=\"resultat\" id=\"resultat\" onchange=\"res();\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
-							echo "<td><input id=\"submitter\" type=\"submit\" value=\"\" /></td>";
+							echo "<td><select name=\"resultat$donnees[id_match]\" id=\"resultat$donnees[id_match]\" onchange=\"res($donnees[id_match]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
+							echo "<td><a id=\"test$donnees[id_match]\"href=\"../controller/setResultat.controller.php?idM=$donnees[id_match]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
 							echo "</tr>";
 					}						
 					?>
@@ -77,10 +77,7 @@
 
 	<?php include("footer.php"); ?>
 	
-	<script type="text/javascript">
-		function res()
-		{document.getElementById("submitter").value=resultat.options[resultat.selectedIndex].value;}
-	</script>
+	<script src="../js/projetweb.js"></script>
 	
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
