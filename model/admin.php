@@ -1,13 +1,30 @@
 <?php
 
-function existeJoueur($pseudo,$email){
+function listeAdmins($pseudo){
 	//donnée : email de l'étudiant et son mot de passe crypté 
 	//pré : email : String / password : String 
 	//résultat : id de l'étudiant s'il existe, NULL sinon 
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT id_joueur FROM joueur WHERE pseudo_joueur=? OR email_joueur=?;');
+			$req=$pdo->prepare('SELECT pseudo_admin, email_admin FROM administrateur WHERE pseudo_admin!=?;');
+			$req->execute(array($pseudo));
+			$liste=$req;
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+		return $liste;
+}
+
+function existeAdmin($pseudo,$email){
+	//donnée : email de l'étudiant et son mot de passe crypté 
+	//pré : email : String / password : String 
+	//résultat : id de l'étudiant s'il existe, NULL sinon 
+	//post : id : entier >0
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT id_admin FROM administrateur WHERE pseudo_admin=? OR email_admin=?;');
 			$req->execute(array($pseudo,$email));
 			$id=$req->fetch();
 		}catch(PDOException $e){
@@ -17,48 +34,14 @@ function existeJoueur($pseudo,$email){
 		return $id[0];
 }
 
-function connexionJoueur($pseudo,$password){
+function ajoutAdmin($pseudo,$password,$email){
 	//donnée : email de l'étudiant et son mot de passe crypté 
 	//pré : email : String / password : String 
 	//résultat : id de l'étudiant s'il existe, NULL sinon 
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT pseudo_admin FROM administrateur WHERE pseudo_admin=? AND mdp_admin=?;');
-			$req->execute(array($pseudo,$password));
-			$id=$req->fetch();
-		}catch(PDOException $e){
-			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
-		}
-		
-		if(empty($id)){
-		
-			try{
-				$req=$pdo->prepare('SELECT pseudo_joueur FROM joueur WHERE pseudo_joueur=? AND mdp_joueur=?;');
-				$req->execute(array($pseudo,$password));
-				$id=$req->fetch();
-			}catch(PDOException $e){
-				echo($e->getMessage());
-				die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
-			}
-			
-			$id[1]="joueur";
-		}else{
-			$id[1]="admin";
-		}
-		return $id;
-		
-}
-
-function ajoutJoueur($pseudo,$password,$email){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
-		global $pdo;
-		try{
-			$req=$pdo->prepare('INSERT INTO joueur (pseudo_joueur,mdp_joueur,email_joueur) VALUES (?,?,?)');
+			$req=$pdo->prepare('INSERT INTO administrateur (pseudo_admin,mdp_admin,email_admin) VALUES (?,?,?)');
 			$req->execute(array($pseudo,$password,$email));
 		}catch(PDOException $e){
 			echo($e->getMessage());
@@ -66,27 +49,15 @@ function ajoutJoueur($pseudo,$password,$email){
 		}
 }
 
-function listeJoueurs(){
-	global $pdo;
-	try{
-		$req=$pdo->prepare('SELECT pseudo_joueur,email_joueur FROM joueur');
-		$req->execute();
-		$liste=$req;
-	}catch(PDOException $e){
-		echo($e->getMessage());
-		die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
-	}
-	return $liste;
-}
 
-function supprimerJoueur($pseudo){
+function supprimerAdmin($pseudo){
 	//donnée : email de l'étudiant et son mot de passe crypté 
 	//pré : email : String / password : String 
 	//résultat : id de l'étudiant s'il existe, NULL sinon 
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('DELETE FROM joueur WHERE pseudo_joueur=?;');
+			$req=$pdo->prepare('DELETE FROM administrateur WHERE pseudo_admin=? AND pseudo_admin NOT LIKE \'AdminProjetWeb\';');
 			$req->execute(array($pseudo));
 		}catch(PDOException $e){
 			echo($e->getMessage());

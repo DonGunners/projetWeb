@@ -25,10 +25,10 @@
                         <a href="../controller/gestionResultats.controller.php">Résultats</a>
                     </li>
                     <li>
-                        <a href="#">Admins</a>
+                        <a href="../controller/gestionAdmins.controller.php">Admins</a>
                     </li>
 					<li>
-                        <a href="#">Joueurs</a>
+                        <a href="../controller/gestionJoueurs.controller.php">Joueurs</a>
                     </li>
 					<li>
                         <a href="../controller/deconnexion.controller.php">Déconnexion</a>
