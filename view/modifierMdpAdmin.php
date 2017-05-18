@@ -40,32 +40,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Gestion Admins</h2>
+                    <h2>Formulaire modification du mot de passe</h2>
                     <hr class="star-primary">
-				<a href="../controller/ajouterAdmin.controller.php"><button type="button" class="btn btn-primary">Ajouter un admin</button></a>
-				<a href="../controller/modifierMdpAdmin.controller.php"><button type="button" class="btn btn-warning">Modifier mon mot de passe</button></a>
-				<a href="../controller/modifierEmailAdmin.controller.php"><button type="button" class="btn btn-warning">Modifier email</button></a>
-				<br /><br />
-				<div class="panel panel-success">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>Pseudo</th>
-								<th>email</th>
-								<th>Supprimer</th>
-							</tr>
-						</thead>
-					<?php
-					while($donnees=$listeAdmins->fetch()){
-						    echo "<tr>";
-							echo "<td>$donnees[pseudo_admin]</td>";
-							echo "<td>$donnees[email_admin]</td>";
-							echo "<td><a href=\"../controller/supprimerAdmin.controller.php?pseudo=$donnees[pseudo_admin]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
-							echo "</tr>";
-					}						
-					?>
-					</table>
-				</div>
+					<form method="post" action="../controller/pageConfirmationModificationMdpAdmin.controller.php">
+						<p>
+							<label for="pseudo"> Ancien mot de passe :</label><br />
+							<input type="password" name="oldPassword" id="oldPassword" value=""/>
+							<br />
+							<br />
+							<label for="pseudo"> Nouveau mot de passe :</label><br />
+							<input type="password" name="password" id="password" value=""/>
+							<br />
+							<br />
+							<label for="pseudo"> Confirmer nouveau mot de passe :</label><br />
+							<input type="password" name="password2" id="password2" value=""/>
+							<br />
+							<br />
+							<input type="hidden" name="pseudo" id="pseudo" value="<?php echo $pseudo; ?>" />
+							<input type="submit" value="Confirmer" />
+						</p>
+					</form>
 				</div>
             </div>
         </div>

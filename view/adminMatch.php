@@ -43,7 +43,7 @@
                 <div class="col-lg-12 text-center">
                     <h2>Gestion Matchs</h2>
                     <hr class="star-primary">
-				<div class="panel panel-success" id="tableGestion">
+				<div class="table-responsive" id="tableGestion">
 					<table class="table table-bordered">
 						<thead>
 							<tr>

@@ -39,33 +39,11 @@
 	<section id="portfolio">
         <div class="container">
             <div class="row">
+				<a href="../controller/gestionAdmins.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
                 <div class="col-lg-12 text-center">
-                    <h2>Gestion Admins</h2>
+                    <h2>Formulaire modification de l'email</h2>
                     <hr class="star-primary">
-				<a href="../controller/ajouterAdmin.controller.php"><button type="button" class="btn btn-primary">Ajouter un admin</button></a>
-				<a href="../controller/modifierMdpAdmin.controller.php"><button type="button" class="btn btn-warning">Modifier mon mot de passe</button></a>
-				<a href="../controller/modifierEmailAdmin.controller.php"><button type="button" class="btn btn-warning">Modifier email</button></a>
-				<br /><br />
-				<div class="panel panel-success">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>Pseudo</th>
-								<th>email</th>
-								<th>Supprimer</th>
-							</tr>
-						</thead>
-					<?php
-					while($donnees=$listeAdmins->fetch()){
-						    echo "<tr>";
-							echo "<td>$donnees[pseudo_admin]</td>";
-							echo "<td>$donnees[email_admin]</td>";
-							echo "<td><a href=\"../controller/supprimerAdmin.controller.php?pseudo=$donnees[pseudo_admin]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
-							echo "</tr>";
-					}						
-					?>
-					</table>
-				</div>
+					<p>Modification effectuée</p>
 				</div>
             </div>
         </div>

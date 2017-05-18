@@ -106,4 +106,24 @@ function setResultat($id,$res){
 		}
 }
 
+function listePronostics($pseudo){
+	
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT c.nom_competition, p.libelle_phase, m.date_match, m.id_match, m.nom_equipe1, m.nom_equipe2, m.cote_equipe1, m.cote_match_nul, m.cote_equipe2
+				FROM competition c, phase p, match m
+				WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.id_match NOT IN (
+				SELECT pr.id_match 
+				FROM pronostic pr, joueur j 
+				WHERE j.pseudo_joueur LIKE ? AND j.id_joueur=pr.id_joueur)
+				ORDER BY m.date_match');
+			$req->execute(array($pseudo));
+			$liste=$req;
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+		return $liste;
+}
+
 ?>

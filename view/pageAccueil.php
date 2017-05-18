@@ -38,7 +38,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contenu</h2>
+                    <h2>Bienvenue</h2>
                     <hr class="star-primary">
                 </div>
             </div>

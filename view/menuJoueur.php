@@ -19,7 +19,7 @@
                         <a href="../controller/pageAccueil.controller.php">Accueil</a>
                     </li>
                     <li>
-                        <a href="#">Pronostics</a>
+                        <a href="../controller/pagePronostics.controller.php">Pronostics</a>
                     </li>
                     <li>
                         <a href="#">Résultats</a>

@@ -40,33 +40,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Gestion Admins</h2>
+                    <h2>Pronostics</h2>
                     <hr class="star-primary">
-				<a href="../controller/ajouterAdmin.controller.php"><button type="button" class="btn btn-primary">Ajouter un admin</button></a>
-				<a href="../controller/modifierMdpAdmin.controller.php"><button type="button" class="btn btn-warning">Modifier mon mot de passe</button></a>
-				<a href="../controller/modifierEmailAdmin.controller.php"><button type="button" class="btn btn-warning">Modifier email</button></a>
-				<br /><br />
-				<div class="panel panel-success">
+				<div class="table-responsive">
 					<table class="table table-bordered">
-						<thead>
+						<thead style="background-color: #5CB85C";>
 							<tr>
-								<th>Pseudo</th>
-								<th>email</th>
-								<th>Supprimer</th>
+								<th>Compétition</th>
+								<th colspan="3">Match/cotes</th>
+								<th>Pronostic</th>
+								<th></th>
 							</tr>
 						</thead>
 					<?php
-					while($donnees=$listeAdmins->fetch()){
+					while($donnees=$listePronos->fetch()){
 						    echo "<tr>";
-							echo "<td>$donnees[pseudo_admin]</td>";
-							echo "<td>$donnees[email_admin]</td>";
-							echo "<td><a href=\"../controller/supprimerAdmin.controller.php?pseudo=$donnees[pseudo_admin]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
+							echo "<td rowspan=\"2\"> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_match]</td>";
+							echo "<td colspan=\"3\"> $donnees[nom_equipe1] - $donnees[nom_equipe2]</td>";
+							echo "<td rowspan=\"2\"><select name=\"resultat$donnees[id_match]\" id=\"resultat$donnees[id_match]\" onchange=\"res($donnees[id_match]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
+							echo "<td rowspan=\"2\"><a id=\"test$donnees[id_match]\"href=\"../controller/setResultat.controller.php?idM=$donnees[id_match]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
+							echo "</tr>";
+							echo "<tr>";
+							echo "<td> $donnees[cote_equipe1] </td>";
+							echo "<td> $donnees[cote_match_nul] </td>";
+							echo "<td> $donnees[cote_equipe2] </td>";
 							echo "</tr>";
 					}						
 					?>
 					</table>
 				</div>
-				</div>
+			</div>
             </div>
         </div>
     </section>
