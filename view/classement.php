@@ -40,33 +40,39 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Pronostics</h2>
+                    <h2>Classement</h2>
                     <hr class="star-primary">
 				<div class="table-responsive">
 					<table class="table table-bordered">
 						<thead style="background-color: #5CB85C";>
 							<tr>
-								<th>Compétition</th>
-								<th colspan="3">Match/cotes</th>
-								<th>Pronostic</th>
-								<th></th>
+								<th>#</th>
+								<th>Pseudo</th>
+								<th>Total</th>
+								<?php while($donnees=$listeCompet->fetch()){
+									echo "<th>$donnees[nom_competition]</th>";
+								} ?>
 							</tr>
 						</thead>
-					<?php
-					while($donnees=$listePronos->fetch()){
-						    echo "<tr>";
-							echo "<td rowspan=\"2\"> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_match]</td>";
-							echo "<td colspan=\"3\"> $donnees[nom_equipe1] - $donnees[nom_equipe2]</td>";
-							echo "<td rowspan=\"2\"><select name=\"resultat$donnees[id_match]\" id=\"resultat$donnees[id_match]\" onchange=\"prono($donnees[id_match]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
-							echo "<td rowspan=\"2\"><a id=\"test$donnees[id_match]\"href=\"../controller/setProno.controller.php?idM=$donnees[id_match]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
-							echo "</tr>";
-							echo "<tr>";
-							echo "<td> $donnees[cote_equipe1] </td>";
-							echo "<td> $donnees[cote_match_nul] </td>";
-							echo "<td> $donnees[cote_equipe2] </td>";
-							echo "</tr>";
-					}						
-					?>
+						<tbody>
+							<?php while($joueur=$class->fetch()){
+								echo "<tr>";
+								echo "<td>";
+								echo $cpt;
+								echo "</td>";
+								echo "<td>$joueur[pseudo_joueur]</td>";
+								echo "<td>$joueur[total]</td>";
+								$listeCompet=listeCompetition();
+								while($donnees=$listeCompet->fetch()){
+									$score=getScore($joueur['pseudo_joueur'],$donnees['nom_competition']);
+									echo "<td>";
+									echo $score;
+									echo "</td>";
+								}
+								echo "</tr>";
+								$cpt=$cpt+1;
+							} ?>
+						</tbody>
 					</table>
 				</div>
 			</div>

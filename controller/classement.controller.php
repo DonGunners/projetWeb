@@ -2,7 +2,9 @@
   require_once('../vendor/autoload.php');
   require_once('../model/token.php');
   require_once('../model/match.php');
+  require_once('../model/competition.php');
   require_once('../model/pronostic.php');
+  require_once('../model/classement.php');  
   require_once('../model/connexionBD.php');
   use \Firebase\JWT\JWT;
 
@@ -25,12 +27,16 @@
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
 		  $menu="menuJoueur.php";
-		  $listePronos=listePronostics($pseudo);
-          include('../view/pagePronostics.php');
+		  $listeCompet=listeCompetition();
+		  $class=classement();
+		  $cpt=1;
+          include('../view/classement.php');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-          Header('Location:../controller/redirection.php');
+		  $listeCompet=listeCompetition();
+		  $class=classement();
+          include('../view/classement.php');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";

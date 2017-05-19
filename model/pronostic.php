@@ -34,7 +34,7 @@ function listeParisEnCours($id){
 		try{
 			$req=$pdo->prepare('SELECT c.nom_competition, p.libelle_phase, m.date_match, m.nom_equipe1, m.nom_equipe2, m.cote_equipe1, m.cote_match_nul, m.cote_equipe2, pr.prono_joueur, pr.date_prono
 				FROM match m, pronostic pr, phase p, competition c
-				WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.id_match=pr.id_match AND pr.id_joueur=?
+				WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.id_match=pr.id_match AND pr.id_joueur=? AND m.resultat_match IS NULL
 				ORDER BY m.date_match ASC');
 			$req->execute(array($id));
 		}catch(PDOException $e){
