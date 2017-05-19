@@ -42,58 +42,28 @@
                 <div class="col-lg-12 text-center">
                     <h2>Pronostics</h2>
                     <hr class="star-primary">
-					<ul class="nav nav-tabs">
-					  <li <?php if(!isset($_GET['mode'])){echo "class=\"active\"";} ?> ><a href="../controller/pageResultats.controller.php">Terminés</a></li>
-					  <li <?php if(isset($_GET['mode'])){echo "class=\"active\"";} ?> ><a href="../controller/pageResultats.controller.php?mode=1">En cours</a></li>
-					</ul>
 				<div class="table-responsive">
 					<table class="table table-bordered">
 						<thead style="background-color: #5CB85C";>
 							<tr>
 								<th>Compétition</th>
-								<th>Match</th>
+								<th colspan="3">Match/cotes</th>
 								<th>Pronostic</th>
-								<?php if(!isset($_GET['mode'])){echo "<th>Résultat</th>";} ?> 
+								<th></th>
 							</tr>
 						</thead>
 					<?php
-					while($donnees=$listeParis->fetch()){
+					while($donnees=$listePronos->fetch()){
+						    echo "<tr>";
+							echo "<td rowspan=\"2\"> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_match]</td>";
+							echo "<td colspan=\"3\"> $donnees[nom_equipe1] - $donnees[nom_equipe2]</td>";
+							echo "<td rowspan=\"2\"><select name=\"resultat$donnees[id_match]\" id=\"resultat$donnees[id_match]\" onchange=\"prono($donnees[id_match]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
+							echo "<td rowspan=\"2\"><a id=\"test$donnees[id_match]\"href=\"../controller/setProno.controller.php?idM=$donnees[id_match]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
+							echo "</tr>";
 							echo "<tr>";
-							echo "<td> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_match] </td>";
-							echo "<td> $donnees[nom_equipe1] - $donnees[nom_equipe2]</td>";
-							if(isset($donnees['resultat_match'])){
-							if($donnees['resultat_match']===$donnees['prono_joueur']){
-								echo "<td style=\"background-color: #90EE90\">";
-							}else{
-								echo "<td style=\"background-color: #E9967A\">";
-							}
-								}else{
-									echo "<td>";
-								}
-							if($donnees['prono_joueur']==="1"){
-								echo "$donnees[nom_equipe1]<br />($donnees[cote_equipe1])</td>";									
-							}else if($donnees['prono_joueur']==="N"){
-								echo "Match nul<br />($donnees[cote_match_nul])</td>";									
-							}else if($donnees['prono_joueur']==="2"){
-								echo "$donnees[nom_equipe2]<br />($donnees[cote_equipe2])</td>";									
-							}else{
-								echo "</td>";								
-							}
-if(!isset($_GET['mode'])){
-							if(is_null($donnees['resultat_match'])){
-									
-							}else{
-								if($donnees['resultat_match']==="1"){
-									echo "<td > $donnees[nom_equipe1]<br />($donnees[cote_equipe1])</td>";									
-								}else if($donnees['resultat_match']==="N"){
-									echo "<td> Match nul<br />($donnees[cote_match_nul])</td>";									
-								}else if($donnees['resultat_match']==="2"){
-									echo "<td> $donnees[nom_equipe2]<br />($donnees[cote_equipe2])</td>";									
-								}else{
-									echo "<td></td>";								
-								}							
-							}
-}
+							echo "<td> $donnees[cote_equipe1] </td>";
+							echo "<td> $donnees[cote_match_nul] </td>";
+							echo "<td> $donnees[cote_equipe2] </td>";
 							echo "</tr>";
 					}						
 					?>

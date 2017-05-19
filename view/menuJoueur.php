@@ -25,7 +25,7 @@
                         <a href="../controller/pageResultats.controller.php">Résultats</a>
                     </li>
 					<li>
-                        <a href="#">Classement</a>
+                        <a href="../controller/classement.controller.php">Classement</a>
                     </li>
 					<li>
                         <a href="#">Profil</a>

@@ -1,7 +1,7 @@
 <?php
   require_once('../vendor/autoload.php');
   require_once('../model/token.php');
-  require_once('../model/joueur.php');
+  require_once('../model/match.php');
   require_once('../model/pronostic.php');
   require_once('../model/connexionBD.php');
   use \Firebase\JWT\JWT;
@@ -25,13 +25,8 @@
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
 		  $menu="menuJoueur.php";
-		  $id=getIdJoueur($pseudo);
-		  if(isset($_GET['mode'])){
-			$listeParis=listeParisEnCours($id);
-		  }else{
-			$listeParis=listeParisFinis($id);			  
-		  }
-          include('../view/pageResultats.php');
+		  $listePronos=listePronostics($pseudo);
+          include('../view/pagePronostics.php');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
