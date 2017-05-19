@@ -22,7 +22,10 @@
                         <a href="../controller/pagePronostics.controller.php">Pronostics</a>
                     </li>
                     <li>
-                        <a href="#">Résultats</a>
+                        <a href="../controller/pageResultats.controller.php">Résultats</a>
+                    </li>
+					<li>
+                        <a href="#">Classement</a>
                     </li>
 					<li>
                         <a href="#">Profil</a>
