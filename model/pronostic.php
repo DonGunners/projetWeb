@@ -16,10 +16,10 @@ function listeParisFinis($id){
 	
 		global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT c.nom_competition, p.libelle_phase, m.date_match, m.nom_equipe1, m.nom_equipe2, m.cote_equipe1, m.cote_match_nul, m.cote_equipe2, m.resultat_match, pr.prono_joueur, pr.date_prono
-				FROM match m, pronostic pr, phase p, competition c
-				WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.id_match=pr.id_match AND pr.id_joueur=? AND m.resultat_match IS NOT NULL
-				ORDER BY m.date_match DESC');
+			$req=$pdo->prepare('SELECT c.nom_competition, p.libelle_phase, m.date_rencontre, m.nom_equipe1, m.nom_equipe2, m.cote_equipe1, m.cote_nul, m.cote_equipe2, m.resultat_rencontre, pr.prono_joueur, pr.date_prono
+				FROM rencontre m, pronostic pr, phase p, competition c
+				WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.id_rencontre=pr.id_rencontre AND pr.id_joueur=? AND m.resultat_rencontre IS NOT NULL
+				ORDER BY m.date_rencontre DESC');
 			$req->execute(array($id));
 		}catch(PDOException $e){
 			echo($e->getMessage());
@@ -32,10 +32,10 @@ function listeParisEnCours($id){
 	
 		global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT c.nom_competition, p.libelle_phase, m.date_match, m.nom_equipe1, m.nom_equipe2, m.cote_equipe1, m.cote_match_nul, m.cote_equipe2, pr.prono_joueur, pr.date_prono
-				FROM match m, pronostic pr, phase p, competition c
-				WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.id_match=pr.id_match AND pr.id_joueur=? AND m.resultat_match IS NULL
-				ORDER BY m.date_match ASC');
+			$req=$pdo->prepare('SELECT c.nom_competition, p.libelle_phase, m.date_rencontre, m.nom_equipe1, m.nom_equipe2, m.cote_equipe1, m.cote_nul, m.cote_equipe2, pr.prono_joueur, pr.date_prono
+				FROM rencontre m, pronostic pr, phase p, competition c
+				WHERE c.id_competition=p.id_competition AND p.id_phase=m.id_phase AND m.id_rencontre=pr.id_rencontre AND pr.id_joueur=? AND m.resultat_rencontre IS NULL
+				ORDER BY m.date_rencontre ASC');
 			$req->execute(array($id));
 		}catch(PDOException $e){
 			echo($e->getMessage());

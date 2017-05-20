@@ -61,10 +61,10 @@
 						    echo "<tr>";
 							echo "<td>$donnees[nom_competition]</td>";
 							echo "<td>$donnees[libelle_phase]</td>";
-							echo "<td>$donnees[match]</td>";
-							echo "<td>$donnees[date_match]</td>";
-							echo "<td><select name=\"resultat$donnees[id_match]\" id=\"resultat$donnees[id_match]\" onchange=\"res($donnees[id_match]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
-							echo "<td><a id=\"test$donnees[id_match]\"href=\"../controller/setResultat.controller.php?idM=$donnees[id_match]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
+							echo "<td>$donnees[rencontre]</td>";
+							echo "<td>$donnees[date_rencontre]</td>";
+							echo "<td><select name=\"resultat$donnees[id_rencontre]\" id=\"resultat$donnees[id_rencontre]\" onchange=\"res($donnees[id_rencontre]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
+							echo "<td><a id=\"test$donnees[id_rencontre]\"href=\"../controller/setResultat.controller.php?idM=$donnees[id_rencontre]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
 							echo "</tr>";
 					}						
 					?>

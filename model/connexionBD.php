@@ -1,9 +1,9 @@
 <?php
 try
 	{
-		$pseudo='postgres';
-		$password='postgresql';
-		$pdo = new PDO('pgsql:host=localhost;dbname=bdPronos',$pseudo,$password);
+		$pseudo='root';
+		$password='';
+		$pdo = new PDO('mysql:host=localhost;dbname=projetWeb',$pseudo,$password);
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 	catch(Exception $e)

@@ -1,10 +1,10 @@
 <?php
   require_once('../vendor/autoload.php');
   require_once('../model/token.php');
-  require_once('../model/match.php');
+  require_once('../model/rencontre.php');
   require_once('../model/competition.php');
   require_once('../model/pronostic.php');
-  require_once('../model/classement.php');  
+  require_once('../model/joueur.php');  
   require_once('../model/connexionBD.php');
   use \Firebase\JWT\JWT;
 
