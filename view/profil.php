@@ -43,10 +43,12 @@
                     <h2>Mon profil</h2>
                     <hr class="star-primary">
 				</div>
-				<ul>
-				  <li><?php echo "Pseudo : $joueur[pseudo_joueur]"; ?></li>
-				  <li><?php echo "email : $joueur[email_joueur]"; ?></li>
-				</ul>
+				<div>
+				  <p><?php echo "Pseudo : $joueur[pseudo_joueur]"; ?></p>
+				  <p><?php echo "Email : $joueur[email_joueur]"; ?></p>
+				<a href="../controller/modifierMdpJoueur.controller.php"><button type="button" class="btn btn-warning">Modifier mon mot de passe</button></a>
+				<a href="../controller/modifierEmailJoueur.controller.php"><button type="button" class="btn btn-warning">Modifier email</button></a>
+				 </div>
             </div>
         </div>
     </section>

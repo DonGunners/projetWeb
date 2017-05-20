@@ -23,14 +23,13 @@
 	  if (verificationToken($decoded_array)){
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
-		  $menu="menuJoueur.php";
-		  $joueur=getJoueur($pseudo);
-		  include('../view/profil.php');
+		$menu="menuJoueur.php";
+          include('../view/modifierEmailJoueur.php');
 
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-          Header('Location:../controller/redirection.php');
+          Header('Location:../controller/redirection.php');			
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";

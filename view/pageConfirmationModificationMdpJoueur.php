@@ -11,6 +11,8 @@
 
     <title>Projet Web</title>
 
+    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
+	
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -37,28 +39,18 @@
 	<section id="portfolio">
         <div class="container">
             <div class="row">
+				<a href="../controller/profil.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
                 <div class="col-lg-12 text-center">
-                    <h2>Connexion</h2>
+                    <h2>Formulaire modification du mot de passe</h2>
                     <hr class="star-primary">
-					<form method="post" action="../controller/connexionJoueur.controller.php">
-						<p>
-							<label for="pseudo">Votre pseudo :</label><br />
-							<input type="text" name="pseudo" id="pseudo" />
-       
-							<br />
-							<label for="password">Votre mot de passe :</label><br />
-							<input type="password" name="password" id="password" />
-							<br /><br />
-							<input type="submit" value="Connexion" />
-						</p>
-					</form>
-                </div>
+					<p>Modification effectuée</p>
+				</div>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-
+	
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 

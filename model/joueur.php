@@ -192,4 +192,52 @@ function getScore($pseudo,$compet){
 		return $liste[0];
 }
 
+function getMdpJoueur($pseudo){
+	//donnée : email de l'étudiant et son mot de passe crypté 
+	//pré : email : String / password : String 
+	//résultat : id de l'étudiant s'il existe, NULL sinon 
+	//post : id : entier >0
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT mdp_joueur FROM joueur WHERE pseudo_joueur=?');
+			$req->execute(array($pseudo));
+			$mdp=$req->fetch();
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+		
+		return $mdp[0];
+}
+
+function modifierMdpJoueur($pseudo,$mdp){
+	//donnée : email de l'étudiant et son mot de passe crypté 
+	//pré : email : String / password : String 
+	//résultat : id de l'étudiant s'il existe, NULL sinon 
+	//post : id : entier >0
+		global $pdo;
+		try{
+			$req=$pdo->prepare('UPDATE joueur SET mdp_joueur=? WHERE pseudo_joueur=?');
+			$req->execute(array($mdp,$pseudo));
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+}
+
+function modifierEmailJoueur($pseudo,$email){
+	//donnée : email de l'étudiant et son mot de passe crypté 
+	//pré : email : String / password : String 
+	//résultat : id de l'étudiant s'il existe, NULL sinon 
+	//post : id : entier >0
+		global $pdo;
+		try{
+			$req=$pdo->prepare('UPDATE joueur SET email_joueur=? WHERE pseudo_joueur=?');
+			$req->execute(array($email,$pseudo));
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+}
+
 ?>

@@ -23,9 +23,8 @@
 	  if (verificationToken($decoded_array)){
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
-		  $menu="menuJoueur.php";
-		  $joueur=getJoueur($pseudo);
-		  include('../view/profil.php');
+			$menu="menuJoueur.php";
+	      include('../view/modifierMdpJoueur.php');
 
         }
         else if($decoded_array['role']==="admin"){
