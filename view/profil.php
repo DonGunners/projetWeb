@@ -40,53 +40,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Classement</h2>
+                    <h2>Mon profil</h2>
                     <hr class="star-primary">
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead style="background-color: #5CB85C";>
-							<tr>
-								<th>#</th>
-								<th>Pseudo</th>
-								<th>Total</th>
-								<?php while($donnees=$listeCompet->fetch()){
-									echo "<th>$donnees[nom_competition]</th>";
-								} ?>
-							</tr>
-						</thead>
-						<tbody>
-							<?php while($joueur=$class->fetch()){
-								echo "<tr>";
-								echo "<td>";
-								echo $cpt;
-								echo "</td>";
-								echo "<td>$joueur[pseudo_joueur]</td>";
-								echo "<td>$joueur[total]</td>";
-								$listeCompet=listeCompetition();
-								while($donnees=$listeCompet->fetch()){
-									$score=getScore($joueur['pseudo_joueur'],$donnees['nom_competition']);
-									echo "<td>";
-									if(empty($score)){
-										echo "0";
-									}else{
-										echo $score;
-									}
-									echo "</td>";
-								}
-								echo "</tr>";
-								$cpt=$cpt+1;
-							} ?>
-						</tbody>
-					</table>
 				</div>
-			</div>
+				<ul>
+				  <li><?php echo "Pseudo : $joueur[pseudo_joueur]"; ?></li>
+				  <li><?php echo "email : $joueur[email_joueur]"; ?></li>
+				</ul>
             </div>
         </div>
     </section>
 
 	<?php include("footer.php"); ?>
-	
-	<script src="../js/projetweb.js"></script>
 	
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>

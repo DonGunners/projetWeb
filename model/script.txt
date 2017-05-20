@@ -1,0 +1,72 @@
+CREATE TABLE public.administrateur
+(
+    id_admin SERIAL,
+    pseudo_admin character varying(50) COLLATE pg_catalog."default",
+    mdp_admin character varying(150) COLLATE pg_catalog."default",
+    email_admin character varying(80) COLLATE pg_catalog."default",
+    PRIMARY KEY (id_admin)
+);
+
+CREATE TABLE public.competition
+(
+    id_competition SERIAL,
+    nom_competition character varying(50) COLLATE pg_catalog."default",
+    image_competition character varying(50) COLLATE pg_catalog."default",
+    PRIMARY KEY (id_competition)
+);
+
+CREATE TABLE public.phase
+(
+    id_phase SERIAL,
+    id_competition integer,
+    libelle_phase character varying(50) COLLATE pg_catalog."default",
+    PRIMARY KEY (id_phase),
+    FOREIGN KEY (id_competition)
+        REFERENCES public.competition (id_competition) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE public.match
+(
+    id_match SERIAL,
+    id_phase integer,
+    date_match timestamp without time zone,
+    nom_equipe1 character varying(50) COLLATE pg_catalog."default",
+    nom_equipe2 character varying(50) COLLATE pg_catalog."default",
+    cote_equipe1 real,
+    cote_match_nul real,
+    cote_equipe2 real,
+    resultat_match character varying(2) COLLATE pg_catalog."default",
+    PRIMARY KEY (id_match),
+    FOREIGN KEY (id_phase)
+        REFERENCES public.phase (id_phase) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+CREATE TABLE public.joueur
+(
+    id_joueur SERIAL,
+    pseudo_joueur character varying(50) COLLATE pg_catalog."default",
+    mdp_joueur character varying(150) COLLATE pg_catalog."default",
+    email_joueur character varying(80) COLLATE pg_catalog."default",
+    PRIMARY KEY (id_joueur)
+);
+
+CREATE TABLE public.pronostic
+(
+    id_joueur integer NOT NULL,
+    id_match integer NOT NULL,
+    prono_joueur character varying(2) COLLATE pg_catalog."default",
+    date_prono timestamp without time zone,
+    PRIMARY KEY (id_joueur, id_match),
+    FOREIGN KEY (id_joueur)
+        REFERENCES public.joueur (id_joueur) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY (id_match)
+        REFERENCES public.match (id_match) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);

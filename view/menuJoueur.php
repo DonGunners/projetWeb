@@ -28,7 +28,7 @@
                         <a href="../controller/classement.controller.php">Classement</a>
                     </li>
 					<li>
-                        <a href="#">Profil</a>
+                        <a href="../controller/profil.controller.php">Profil</a>
                     </li>
 					<li>
                         <a href="../controller/deconnexion.controller.php">Déconnexion</a>
