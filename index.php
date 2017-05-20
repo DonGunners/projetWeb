@@ -1,4 +1,4 @@
 <?php
-  header('Location: /controller/pageAccueil.controller.php');      
+  header('Location: ../projetWeb/controller/pageAccueil.controller.php');      
   exit();  
 ?>
