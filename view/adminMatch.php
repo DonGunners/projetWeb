@@ -61,19 +61,19 @@
 					<?php
 					while($donnees=$listeMatchs->fetch()){
 						    echo "<tr>";
-							echo "<td> $donnees[date_match] </td>";
+							echo "<td> $donnees[date_rencontre] </td>";
 							echo "<td> $donnees[nom_equipe1] </td>";
 							echo "<td> $donnees[nom_equipe2] </td>";
 							echo "<td> $donnees[cote_equipe1] </td>";
-							echo "<td> $donnees[cote_match_nul] </td>";
+							echo "<td> $donnees[cote_nul] </td>";
 							echo "<td> $donnees[cote_equipe2] </td>";
-							echo "<td> $donnees[resultat_match] </td>";
-							echo "<td><a href=\"../controller/modifierMatch.controller.php?idM=$donnees[id_match]&idP=";
+							echo "<td> $donnees[resultat_rencontre] </td>";
+							echo "<td><a href=\"../controller/modifierMatch.controller.php?idM=$donnees[id_rencontre]&idP=";
 							echo $_GET['idP'];
 							echo "&idC=";
 							echo $_GET['idC'];
 							echo "\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-							echo "<td><a href=\"../controller/supprimerMatch.controller.php?idM=$donnees[id_match]&idP=";
+							echo "<td><a href=\"../controller/supprimerMatch.controller.php?idM=$donnees[id_rencontre]&idP=";
 							echo $_GET['idP'];
 							echo "&idC=";
 							echo $_GET['idC'];

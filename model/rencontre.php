@@ -57,7 +57,7 @@ function modifierMatch($id,$date,$nom1,$nom2,$cote1,$coteN,$cote2,$res){
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('UPDATE rencontre SET (date_rencontre,nom_equipe1,nom_equipe2,cote_equipe1,cote_nul,cote_equipe2,resultat_rencontre) = (?,?,?,?,?,?,?) WHERE id_rencontre=?;');
+			$req=$pdo->prepare('UPDATE rencontre SET date_rencontre=?,nom_equipe1=?,nom_equipe2=?,cote_equipe1=?,cote_nul=?,cote_equipe2=?,resultat_rencontre=? WHERE id_rencontre=?;');
 			$req->execute(array($date,$nom1,$nom2,$cote1,$coteN,$cote2,$res,$id));
 		}catch(PDOException $e){
 			echo($e->getMessage());

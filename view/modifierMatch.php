@@ -44,7 +44,7 @@
                     <hr class="star-primary">
 					<form method="post" action="../controller/pageConfirmationModificationMatch.controller.php?idP=<?php echo $_GET['idP']; ?>&idC=<?php echo $_GET['idC']; ?>">
 						<label for="pseudo">Date Match :</label><br />
-						<input type="datetime" name="date" id="date" value="<?php echo $match[0]['date_match'];?>"/><br />
+						<input type="datetime" name="date" id="date" value="<?php echo $match[0]['date_rencontre'];?>"/><br />
 						<label for="pseudo">Équipe Domicile :</label><br />
 						<input type="text" name="nom1" id="nom1" value="<?php echo $match[0]['nom_equipe1'];?>"/><br />
 						<label for="pseudo">Équipe Extérieur :</label><br />
@@ -52,12 +52,12 @@
 						<label for="pseudo">cote Équipe Domicile :</label><br />
 						<input type="text" name="cote1" id="cote1" value="<?php echo $match[0]['cote_equipe1'];?>"/><br />
 						<label for="pseudo">cote Match Nul :</label><br />
-						<input type="datetime" name="coteN" id="coteN" value="<?php echo $match[0]['cote_match_nul'];?>"/><br />
+						<input type="datetime" name="coteN" id="coteN" value="<?php echo $match[0]['cote_nul'];?>"/><br />
 						<label for="pseudo">cote Équipe Extérieur :</label><br />
 						<input type="text" name="cote2" id="cote2" value="<?php echo $match[0]['cote_equipe2'];?>"/><br />
 						<label for="pseudo">Résultat Match :</label><br />
-						<input type="text" name="res" id="res" value="<?php echo $match[0]['resultat_match'];?>"/><br />
-						<input type="hidden" name="id_match" id="id_match" value="<?php echo $_GET['idM']; ?>"/>
+						<input type="text" name="res" id="res" value="<?php echo $match[0]['resultat_rencontre'];?>"/><br />
+						<input type="hidden" name="id_rencontre" id="id_rencontre" value="<?php echo $_GET['idM']; ?>"/>
 						<input type="submit" value="Confirmer" />
 					</form>
 				</div>

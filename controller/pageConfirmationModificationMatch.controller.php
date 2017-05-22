@@ -28,7 +28,7 @@
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-		modifierMatch($_POST['id_match'],$_POST['date'],$_POST['nom1'],$_POST['nom2'],$_POST['cote1'],$_POST['coteN'],$_POST['cote2'],$_POST['res']);
+		modifierMatch($_POST['id_rencontre'],$_POST['date'],$_POST['nom1'],$_POST['nom2'],$_POST['cote1'],$_POST['coteN'],$_POST['cote2'],$_POST['res']);
           include('../view/pageConfirmationModificationMatch.php');
         }else{
           // On le redirige vers la page admin

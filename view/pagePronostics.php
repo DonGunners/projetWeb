@@ -55,14 +55,14 @@
 					<?php
 					while($donnees=$listePronos->fetch()){
 						    echo "<tr>";
-							echo "<td rowspan=\"2\"> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_match]</td>";
+							echo "<td rowspan=\"2\"> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_rencontre]</td>";
 							echo "<td colspan=\"3\"> $donnees[nom_equipe1] - $donnees[nom_equipe2]</td>";
-							echo "<td rowspan=\"2\"><select name=\"resultat$donnees[id_match]\" id=\"resultat$donnees[id_match]\" onchange=\"prono($donnees[id_match]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
-							echo "<td rowspan=\"2\"><a id=\"test$donnees[id_match]\"href=\"../controller/setProno.controller.php?idM=$donnees[id_match]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
+							echo "<td rowspan=\"2\"><select name=\"resultat$donnees[id_rencontre]\" id=\"resultat$donnees[id_rencontre]\" onchange=\"prono($donnees[id_rencontre]);\"><option value=\"1\">$donnees[nom_equipe1]</option><option value=\"N\">Nul</option><option value=\"2\">$donnees[nom_equipe2]</option></select></td>";
+							echo "<td rowspan=\"2\"><a id=\"test$donnees[id_rencontre]\"href=\"../controller/setProno.controller.php?idM=$donnees[id_rencontre]&Res=1\"><input id=\"submitter\" type=\"submit\" value=\"Confirmer\" /></a></td>";
 							echo "</tr>";
 							echo "<tr>";
 							echo "<td> $donnees[cote_equipe1] </td>";
-							echo "<td> $donnees[cote_match_nul] </td>";
+							echo "<td> $donnees[cote_nul] </td>";
 							echo "<td> $donnees[cote_equipe2] </td>";
 							echo "</tr>";
 					}						

@@ -57,7 +57,7 @@ function modifierPhase($id,$nom){
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('UPDATE phase SET (libelle_phase) = (?) WHERE id_phase=?;');
+			$req=$pdo->prepare('UPDATE phase SET libelle_phase=? WHERE id_phase=?;');
 			$req->execute(array($nom,$id));
 		}catch(PDOException $e){
 			echo($e->getMessage());

@@ -41,7 +41,7 @@ function modifierCompetition($id,$nom,$image){
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('UPDATE competition SET (nom_competition,image_competition) = (?,?) WHERE id_competition=?;');
+			$req=$pdo->prepare('UPDATE competition SET nom_competition=?,image_competition=? WHERE id_competition=?;');
 			$req->execute(array($nom,$image,$id));
 		}catch(PDOException $e){
 			echo($e->getMessage());

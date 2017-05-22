@@ -59,10 +59,10 @@
 					<?php
 					while($donnees=$listeParis->fetch()){
 							echo "<tr>";
-							echo "<td> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_match] </td>";
+							echo "<td> $donnees[nom_competition] <br /> $donnees[libelle_phase] <br /> $donnees[date_rencontre] </td>";
 							echo "<td> $donnees[nom_equipe1] - $donnees[nom_equipe2]</td>";
-							if(isset($donnees['resultat_match'])){
-							if($donnees['resultat_match']===$donnees['prono_joueur']){
+							if(isset($donnees['resultat_rencontre'])){
+							if($donnees['resultat_rencontre']===$donnees['prono_joueur']){
 								echo "<td style=\"background-color: #90EE90\">";
 							}else{
 								echo "<td style=\"background-color: #E9967A\">";
@@ -73,21 +73,21 @@
 							if($donnees['prono_joueur']==="1"){
 								echo "$donnees[nom_equipe1]<br />($donnees[cote_equipe1])</td>";									
 							}else if($donnees['prono_joueur']==="N"){
-								echo "Match nul<br />($donnees[cote_match_nul])</td>";									
+								echo "Match nul<br />($donnees[cote_nul])</td>";									
 							}else if($donnees['prono_joueur']==="2"){
 								echo "$donnees[nom_equipe2]<br />($donnees[cote_equipe2])</td>";									
 							}else{
 								echo "</td>";								
 							}
 if(!isset($_GET['mode'])){
-							if(is_null($donnees['resultat_match'])){
+							if(is_null($donnees['resultat_rencontre'])){
 									
 							}else{
-								if($donnees['resultat_match']==="1"){
+								if($donnees['resultat_rencontre']==="1"){
 									echo "<td > $donnees[nom_equipe1]<br />($donnees[cote_equipe1])</td>";									
-								}else if($donnees['resultat_match']==="N"){
-									echo "<td> Match nul<br />($donnees[cote_match_nul])</td>";									
-								}else if($donnees['resultat_match']==="2"){
+								}else if($donnees['resultat_rencontre']==="N"){
+									echo "<td> Match nul<br />($donnees[cote_nul])</td>";									
+								}else if($donnees['resultat_rencontre']==="2"){
 									echo "<td> $donnees[nom_equipe2]<br />($donnees[cote_equipe2])</td>";									
 								}else{
 									echo "<td></td>";								
