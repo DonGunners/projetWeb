@@ -28,7 +28,7 @@
 </head>
 
 <body id="page-top" class="index">
-
+	<!-- on affiche le menu correspondant à l'utilisateur -->
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -39,20 +39,19 @@
 	<section id="portfolio">
         <div class="container">
             <div class="row">
+				<!-- Ajout d'un bouton de retour -->
+				<a href="../controller/adminPhase.controller.php?idC=<?php echo $_GET['idC'];?>"><button type="button" class="btn btn-primary">Retour</button></a>
                 <div class="col-lg-12 text-center">
-                    <h2>Formulaire ajout</h2>
+                    <h2>Formulaire d'ajout</h2>
                     <hr class="star-primary">
+					<!-- Création du formulaire d'ajout de phase -->
 					<form method="post" action="../controller/pageConfirmationAjoutPhase.controller.php?idC=<?php echo $_GET['idC']; ?>">
-						<p>
-							<label for="pseudo">Nom phase :</label><br />
-							<input type="text" name="nom" id="nom" />
-							<br />
-							<br />
-							<input type="hidden" name="id_competition" id="id_competition" value="<?php echo $_GET['idC']; ?>"/>
-
-							<br /><br />
-							<input type="submit" value="Confirmer" />
-						</p>
+						<label for="nom">Nom phase :</label><br />
+						<input type="text" name="nom" id="nom" />
+						<br /><br />
+						<input type="hidden" name="id_competition" id="id_competition" value="<?php echo $_GET['idC']; ?>"/>
+						<br /><br />
+						<input type="submit" value="Confirmer" />
 					</form>
 				</div>
             </div>
@@ -69,10 +68,6 @@
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="../js/jqBootstrapValidation.js"></script>
-    <script src="../js/contact_me.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="../js/freelancer.min.js"></script>

@@ -28,7 +28,7 @@
 </head>
 
 <body id="page-top" class="index">
-
+	<!-- On affiche le menu correspondant à l'utilisateur -->
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -37,54 +37,53 @@
 	}?>
 
 	<section id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Formulaire ajout</h2>
-                    <hr class="star-primary">
+		<div class="container">
+			<div class="row">
+				<!-- Ajout d'un bouton de retour -->
+				<a href="../controller/adminPhase.controller.php?idC=<?php echo $_GET['idC'];?>"><button type="button" class="btn btn-primary">Retour</button></a>
+				<div class="col-lg-12 text-center">
+					<h2>Formulaire ajout</h2>
+					<hr class="star-primary">
+					<!--Création du formulaire d'ajout d'admin -->
 					<form method="post" action="../controller/pageConfirmationAjoutAdmin.controller.php">
-						<p>
-							<label for="pseudo">Pseudo Admin :</label><br />
-							<input type="text" name="pseudo" id="pseudo" />
-							<br />
-							<br />
-							<label for="pseudo">Mot de passe :</label><br />
-							<input type="password" name="password" id="password" />
-							<br />
-							<br />
-							<label for="pseudo">Confirmation mot de passe :</label><br />
-							<input type="password" name="password2" id="password2" />
-							<br />
-							<br />
-							<label for="pseudo">email :</label><br />
-							<input type="email" name="email" id="email" />
-							<br />
-							<br />
-							<input type="submit" value="Confirmer" />
-						</p>
+					<p>
+					<label for="pseudo">Pseudo Admin :</label><br />
+					<input type="text" name="pseudo" id="pseudo" />
+					<br />
+					<br />
+					<label for="password">Mot de passe :</label><br />
+					<input type="password" name="password" id="password" />
+					<br />
+					<br />
+					<label for="password2">Confirmation mot de passe :</label><br />
+					<input type="password" name="password2" id="password2" />
+					<br />
+					<br />
+					<label for="email">email :</label><br />
+					<input type="email" name="email" id="email" />
+					<br />
+					<br />
+					<input type="submit" value="Confirmer" />
+					</p>
 					</form>
 				</div>
-            </div>
-        </div>
-    </section>
+			</div>
+		</div>
+	</section>
 
 	<?php include("footer.php"); ?>
-	
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- jQuery -->
+	<script src="../vendor/jquery/jquery.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="../js/jqBootstrapValidation.js"></script>
-    <script src="../js/contact_me.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="../js/freelancer.min.js"></script>
+	<!-- Theme JavaScript -->
+	<script src="../js/freelancer.min.js"></script>
 
 </body>
 
