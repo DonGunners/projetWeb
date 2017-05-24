@@ -132,7 +132,7 @@ function classement(){
 
 		global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT pseudo_joueur, SUM(cote1) AS total FROM((SELECT SUM(m.cote_equipe1) AS cote1, j.pseudo_joueur
+			$req=$pdo->prepare('SELECT pseudo_joueur, ROUND(SUM(cote1),2) AS total FROM((SELECT SUM(m.cote_equipe1) AS cote1, j.pseudo_joueur
 				FROM rencontre m, pronostic p, joueur j
 				WHERE m.id_rencontre=p.id_rencontre AND p.id_joueur=j.id_joueur
 				AND m.resultat_rencontre LIKE \'1\' AND p.prono_joueur LIKE \'1\'
@@ -164,7 +164,7 @@ function getScore($pseudo,$compet){
 	
 	global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT SUM(cote1) AS total FROM((SELECT SUM(m.cote_equipe1) AS cote1, j.pseudo_joueur
+			$req=$pdo->prepare('SELECT ROUND(SUM(cote1),2) AS total FROM((SELECT SUM(m.cote_equipe1) AS cote1, j.pseudo_joueur
 				FROM rencontre m, pronostic p, joueur j, phase ph, competition c
 				WHERE m.id_rencontre=p.id_rencontre AND p.id_joueur=j.id_joueur AND m.id_phase=ph.id_phase AND ph.id_competition=c.id_competition
 				AND m.resultat_rencontre LIKE \'1\' AND p.prono_joueur LIKE \'1\' AND c.nom_competition LIKE ? AND j.pseudo_joueur LIKE ?

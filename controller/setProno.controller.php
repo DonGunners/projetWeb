@@ -13,7 +13,7 @@
     if(!isset($_COOKIE["token"])){
 			$menu="menu.php";
             // On le redirige vers la page d'accueil
-            Header('Location:../controller/redirection.php');
+            Header('Location:/redirection');
     }
     else{
 		
@@ -27,18 +27,18 @@
 		  $menu="menuJoueur.php";
 		  $id=getIdJoueur($pseudo);
 		  setProno($_GET['idM'],$_GET['Res'],$id);
-          Header('Location:../controller/pagePronostics.controller.php');
+          Header('Location:/pronostics');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
-          Header('Location:../controller/redirection.php');
+          Header('Location:/redirection');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";
-          Header('Location:../controller/redirection.php');	
+          Header('Location:/redirection');	
 		}
 	  }else{
-          Header('Location:../controller/redirection.php');
+          Header('Location:/redirection');
 	  }
     }
 ?>

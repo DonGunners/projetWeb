@@ -3,7 +3,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-			    <a class="navbar-brand" href="../controller/pageAccueil.controller.php">Site de Pronostics</a>
+			    <a class="navbar-brand" href="/accueil">Site de Pronostics</a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                      Menu <i class="fa fa-bars"></i>
                 </button>
@@ -16,22 +16,22 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="../controller/pageAccueil.controller.php">Accueil</a>
+                        <a href="/accueil">Accueil</a>
                     </li>
                     <li>
-                        <a href="../controller/pagePronostics.controller.php">Pronostics</a>
+                        <a href="/pronostics">Pronostics</a>
                     </li>
                     <li>
-                        <a href="../controller/pageResultats.controller.php">Résultats</a>
+                        <a href="/my-resultats">Résultats</a>
                     </li>
 					<li>
-                        <a href="../controller/classement.controller.php">Classement</a>
+                        <a href="/classement">Classement</a>
                     </li>
 					<li>
-                        <a href="../controller/profil.controller.php">Profil</a>
+                        <a href="/profil">Profil</a>
                     </li>
 					<li>
-                        <a href="../controller/deconnexion.controller.php">Déconnexion</a>
+                        <a href="/deconnexion">Déconnexion</a>
                     </li>
                 </ul>
             </div>

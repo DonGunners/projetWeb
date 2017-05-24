@@ -43,8 +43,8 @@
                     <h2>Pronostics</h2>
                     <hr class="star-primary">
 					<ul class="nav nav-tabs">
-					  <li <?php if(!isset($_GET['mode'])){echo "class=\"active\"";} ?> ><a href="../controller/pageResultats.controller.php">Terminés</a></li>
-					  <li <?php if(isset($_GET['mode'])){echo "class=\"active\"";} ?> ><a href="../controller/pageResultats.controller.php?mode=1">En cours</a></li>
+					  <li <?php if(!isset($_GET['mode'])){echo "class=\"active\"";} ?> ><a href="/my-resultats">Terminés</a></li>
+					  <li <?php if(isset($_GET['mode'])){echo "class=\"active\"";} ?> ><a href="/my-resultats/1">En cours</a></li>
 					</ul>
 				<div class="table-responsive">
 					<table class="table table-bordered">

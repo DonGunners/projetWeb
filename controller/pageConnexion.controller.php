@@ -14,6 +14,6 @@
             include('../view/pageConnexion.php');
     }
     else{
-		    Header('Location:../controller/redirection.php');
+		    Header('Location:/redirection');
     }
 ?>

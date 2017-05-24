@@ -38,17 +38,17 @@ if(!isset($_COOKIE["token"])){
 
 			//On conserve le token dans un cookie
 			setcookie("token", $jwt, time()+$validity_time,"/", null, false, true);
-			header('Location:../controller/pageAccueil.controller.php');
+			header('Location:/accueil');
 		}else{
 			//Si le login est faux, on renvoie l'utilisateur sur la page de connexion
-			include('../controller/pageConnexion.controller.php');
+			header('Location:/connexion');
 		}
 	}else{
 		//On redirige vers la page de connexion
-		header('Location:../controller/pageConnexion.controller.php');
+		header('Location:/redirection');
 	}
 }else{
 	//On redirige vers la page d'accueil
-	header('Location:../controller/redirection.php');
+	header('Location:/redirection');
 }
 ?>
