@@ -17,7 +17,7 @@ if(isset($_COOKIE["token"])){
 	if (verificationToken($decoded_array)){
 		$pseudo=$decoded_array['id'];
 		if($decoded_array['role']==="joueur"){
-			Header('Location:../controller/redirection.php');
+			Header('Location:/redirection');
 		}else if($decoded_array['role']==="admin"){
 			$menu="menuAdmin.php";
 			//On vérifie que les champs ne soient pas vide et non null.
@@ -33,25 +33,25 @@ if(isset($_COOKIE["token"])){
 					$truePassword=getMdpAdmin($pseudo);
 					if($password===$truePassword){
 						ModifierEmailAdmin($pseudo,$email);
-						include('../view/pageConfirmationModificationEmailAdmin.php');
+						Header('Location:/admins/update/email/confirmation');
 					}else{
-						Header('Location:../controller/modifierEmailAdmin.controller.php');			
+						Header('Location:/admins/update/email');			
 					}
 				}else{
-					Header('Location:../controller/modifierEmailAdmin.controller.php');			
+					Header('Location:/admins/update/email');			
 				}
 			}else{
-				Header('Location:../controller/modifierEmailAdmin.controller.php');
+				Header('Location:/admins/update/email');
 			}
 		}else{
-			Header('Location:../controller/modifierEmailAdmin.controller.php');
+			Header('Location:/admins/update/email');
 		}
 	}else{
 		// Cas où la personne passe directement ici par l'url et n'est pas connecté
-		header('Location:../controller/modifierEmailAdmin.controller.php');
+		header('Location:/admins/update/email');
 	}
 }else{
 	// Cas où la personne passe directement ici par l'url et n'est pas connecté
-	header('Location:../controller/pageConnexion.controller.php');
+	header('Location:/redirection');
 }
 ?>
