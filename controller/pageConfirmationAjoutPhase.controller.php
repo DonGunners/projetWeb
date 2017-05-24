@@ -24,19 +24,19 @@
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
 		  $menu="menuJoueur.php";
-            Header('Location:../controller/redirection.php');
+            Header('Location:/redirection');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
 		  ajouterPhase($_POST['id_competition'],$_POST['nom']);
-          include('../view/pageConfirmationAjoutPhase.php');
+          Header('Location:/competition/'.$_POST['id_competition'].'/phase/add/confirmation');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";
-            Header('Location:../controller/redirection.php');			
+            Header('Location:/redirection');			
 		}
 	  }else{
-            Header('Location:../controller/redirection.php');
+            Header('Location:/redirection');
 	  }
     }
 ?>

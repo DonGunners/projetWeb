@@ -40,7 +40,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- Ajout d'un bouton de retour -->
-				<a href="../controller/adminPhase.controller.php?idC=<?php echo $_GET['idC'];?>"><button type="button" class="btn btn-primary">Retour</button></a>
+				<a href="/competition"><button type="button" class="btn btn-primary">Retour</button></a>
 				<div class="col-lg-12 text-center">
 					<h2>Formulaire d'ajout</h2>
 					<hr class="star-primary">

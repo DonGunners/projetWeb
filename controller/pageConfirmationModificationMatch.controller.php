@@ -12,7 +12,7 @@
     if(!isset($_COOKIE["token"])){
 			$menu="menu.php";
             // On le redirige vers la page d'accueil
-            Header('Location:../controller/redirection.php');
+            Header('Location:/redirection');
     }
     else{
 		
@@ -24,7 +24,7 @@
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
 		  $menu="menuJoueur.php";
-            Header('Location:../controller/redirection.php');
+            Header('Location:/redirection');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
@@ -32,14 +32,14 @@
 			  $_POST['res']=NULL;
 		  }
 		modifierMatch($_POST['id_rencontre'],$_POST['date'],$_POST['nom1'],$_POST['nom2'],$_POST['cote1'],$_POST['coteN'],$_POST['cote2'],$_POST['res']);
-          include('../view/pageConfirmationModificationMatch.php');
+          Header('Location:/competition/'.$_GET['idC'].'/phase/'.$_GET['idP'].'/match/'.$_POST['id_rencontre'].'/update/confirmation');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";
-            Header('Location:../controller/redirection.php');			
+            Header('Location:/redirection');			
 		}
 	  }else{
-            Header('Location:../controller/redirection.php');
+            Header('Location:/redirection');
 	  }
     }
 ?>

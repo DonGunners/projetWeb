@@ -11,16 +11,16 @@
 
     <title>Projet Web</title>
 
-    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
+    <link href="/assets/css/projetWeb.css" rel="stylesheet">	
 	
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="../assets/css/freelancer.css" rel="stylesheet">
+    <link href="/assets/css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -40,12 +40,12 @@
 		<div class="container">
 			<div class="row">
 				<!-- Ajout d'un bouton de retour -->
-				<a href="../controller/adminCompetition.controller.php"><button type="button" class="btn btn-primary">Retour</button></a>
+				<a href="/competition"><button type="button" class="btn btn-primary">Retour</button></a>
 					<div class="col-lg-12 text-center">
 						<h2>Gestion Phases</h2>
 						<hr class="star-primary">
 						<!-- Ajout d'un bouton pour accéder au formulaire d'ajout de phase -->
-						<a href="../controller/ajouterPhase.controller.php?idC=<?php echo $_GET['idC']; ?>"><button type="button" class="btn btn-primary">Ajouter une phase</button></a><br /><br />
+						<a href="/competition/<?php echo $_GET['idC']; ?>/phase/add"><button type="button" class="btn btn-primary">Ajouter une phase</button></a><br /><br />
 						<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -61,15 +61,15 @@
 								while($donnees=$listePhase->fetch()){
 									echo "<tr>";
 									echo "<td> $donnees[libelle_phase] </td>";
-									echo "<td><a href=\"../controller/adminMatch.controller.php?idP=$donnees[id_phase]&idC=";
+									echo "<td><a href=\"/competition/";
 									echo $_GET['idC'];
-									echo "\"><button type=\"button\" class=\"btn btn-primary\">Matchs</button></a></td>";
-									echo "<td><a href=\"../controller/modifierPhase.controller.php?idP=$donnees[id_phase]&idC=";
+									echo "/phase/$donnees[id_phase]/match\"><button type=\"button\" class=\"btn btn-primary\">Matchs</button></a></td>";
+									echo "<td><a href=\"/competition/";
 									echo $_GET['idC'];
-									echo "\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-									echo "<td><a href=\"../controller/supprimerPhase.controller.php?idP=$donnees[id_phase]&nom=$donnees[libelle_phase]&idC=";
+									echo "/phase/$donnees[id_phase]/update\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
+									echo "<td><a href=\"/competition/";
 									echo $_GET['idC'];
-									echo "\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
+									echo "/phase/$donnees[id_phase]/delete\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
 									echo "</tr>";
 								}						
 								?>
@@ -84,16 +84,16 @@
 	<?php include("footer.php"); ?>
 
 	<!-- jQuery -->
-	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/jquery/jquery.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	
 	<!-- Theme JavaScript -->
-	<script src="../js/freelancer.min.js"></script>
+	<script src="/js/freelancer.min.js"></script>
 
 </body>
 

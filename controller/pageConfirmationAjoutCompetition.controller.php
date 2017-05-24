@@ -29,7 +29,7 @@
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
 		  ajouterCompetition($_POST['nom'],$_POST['image']);
-          include('../view/pageConfirmationAjoutCompetition.php');
+          Header('Location:/competition/add/confirmation');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";

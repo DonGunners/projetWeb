@@ -19,7 +19,7 @@
                         <a href="/accueil">Accueil</a>
                     </li>
                     <li>
-                        <a href="/gestion">Compétitions</a>
+                        <a href="/competition">Compétitions</a>
                     </li>
 					<li>
                         <a href="/resultats">Résultats</a>

@@ -26,7 +26,7 @@ function getCompetition($id){
 		try{
 			$req=$pdo->prepare('SELECT * FROM competition WHERE id_competition=?;');
 			$req->execute(array($id));
-			$compet=$req->fetchAll();
+			$compet=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
 			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );

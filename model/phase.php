@@ -42,7 +42,7 @@ function getPhase($id){
 		try{
 			$req=$pdo->prepare('SELECT * FROM phase WHERE id_phase=?;');
 			$req->execute(array($id));
-			$phase=$req->fetchAll();
+			$phase=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
 			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );

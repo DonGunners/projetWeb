@@ -31,29 +31,28 @@ if(isset($_COOKIE["token"])){
 					$truePassword=getMdpJoueur($pseudo);
 					if($password===$truePassword){
 						ModifierEmailJoueur($pseudo,$email);
-						include('../view/pageConfirmationModificationEmailJoueur.php');
+						Header('Location:/profil/email/confirmation');
 					}else{
-						Header('Location:../controller/modifierEmailJoueur.controller.php');			
+						Header('Location:/profil/email');			
 					}
 				}else{
-					Header('Location:../controller/modifierEmailJoueur.controller.php');			
+					Header('Location:/profil/email');			
 				}
 			}else{
-				Header('Location:../controller/modifierEmailJoueur.controller.php');
+				Header('Location:/profil/email');
 			}
 
 		}else if($decoded_array['role']==="admin"){
 			$menu="menuAdmin.php";
-			Header('Location:../controller/redirection.php');			
+			Header('Location:/redirection');			
 		}else{
-			Header('Location:../controller/redirection.php');
+			Header('Location:/redirection');
 		}
 	}else{
-		// Cas où la personne passe directement ici par l'url et n'est pas connecté
-		header('Location:../controller/redirection.controller.php');
+		header('Location:/redirection');
 	}
 }else{
 	// Cas où la personne passe directement ici par l'url et n'est pas connecté
-	header('Location:../controller/pageConnexion.controller.php');
+	header('Location:/redirection');
 }
 ?>

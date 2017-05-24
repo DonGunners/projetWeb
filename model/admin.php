@@ -7,7 +7,7 @@ function listeAdmins($pseudo){
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('SELECT pseudo_admin, email_admin FROM administrateur WHERE pseudo_admin!=?;');
+			$req=$pdo->prepare('SELECT * FROM administrateur WHERE pseudo_admin!=?;');
 			$req->execute(array($pseudo));
 			$liste=$req;
 		}catch(PDOException $e){
@@ -50,15 +50,15 @@ function ajoutAdmin($pseudo,$password,$email){
 }
 
 
-function supprimerAdmin($pseudo){
+function supprimerAdmin($id){
 	//donnée : email de l'étudiant et son mot de passe crypté 
 	//pré : email : String / password : String 
 	//résultat : id de l'étudiant s'il existe, NULL sinon 
 	//post : id : entier >0
 		global $pdo;
 		try{
-			$req=$pdo->prepare('DELETE FROM administrateur WHERE pseudo_admin=? AND pseudo_admin NOT LIKE \'AdminProjetWeb\';');
-			$req->execute(array($pseudo));
+			$req=$pdo->prepare('DELETE FROM administrateur WHERE id_admin=? AND pseudo_admin NOT LIKE \'AdminProjetWeb\';');
+			$req->execute(array($id));
 		}catch(PDOException $e){
 			echo($e->getMessage());
 			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
@@ -74,6 +74,24 @@ function getMdpAdmin($pseudo){
 		try{
 			$req=$pdo->prepare('SELECT mdp_admin FROM administrateur WHERE pseudo_admin=?');
 			$req->execute(array($pseudo));
+			$mdp=$req->fetch();
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+		}
+		
+		return $mdp[0];
+}
+
+function getPseudoAdmin($id){
+	//donnée : email de l'étudiant et son mot de passe crypté 
+	//pré : email : String / password : String 
+	//résultat : id de l'étudiant s'il existe, NULL sinon 
+	//post : id : entier >0
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT pseudo_admin FROM administrateur WHERE id_admin=?');
+			$req->execute(array($id));
 			$mdp=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());

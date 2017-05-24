@@ -41,7 +41,7 @@
 					<h2>Gestion Compétitions</h2>
 					<hr class="star-primary">
 					<!-- Ajout d'un bouton permettant d'acceder au formulaire d'ajout de competiton -->
-					<a href="../controller/ajouterCompetition.controller.php"><button type="button" class="btn btn-primary">Ajouter une compétition</button></a><br /><br />
+					<a href="/competition/add"><button type="button" class="btn btn-primary">Ajouter une compétition</button></a><br /><br />
 					<table class="table table-bordered">
 						<thead>
 							<tr>
@@ -59,9 +59,9 @@
 								echo "<tr>";
 								echo "<td><img src=\"../image/$donnees[image_competition]\" style=\"width:20px;height:20px;\" alt=\"Drapeau du pays de la competition\"> </td>";
 								echo "<td> $donnees[nom_competition] </td>";
-								echo "<td><a href=\"../controller/adminPhase.controller.php?idC=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-primary\">Phases</button></a></td>";
-								echo "<td><a href=\"../controller/modifierCompetition.controller.php?idC=$donnees[id_competition]\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-								echo "<td><a href=\"../controller/supprimerCompetition.controller.php?idC=$donnees[id_competition]&nom=$donnees[nom_competition]\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
+								echo "<td><a href=\"/competition/$donnees[id_competition]/phase\"><button type=\"button\" class=\"btn btn-primary\">Phases</button></a></td>";
+								echo "<td><a href=\"/competition/$donnees[id_competition]/update\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
+								echo "<td><a href=\"/competition/$donnees[id_competition]/delete\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
 								echo "</tr>";
 							}						
 							?>

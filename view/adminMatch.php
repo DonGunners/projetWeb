@@ -9,16 +9,16 @@
 
     <title>Projet Web</title>
 
-    <link href="../assets/css/projetWeb.css" rel="stylesheet">	
+    <link href="/assets/css/projetWeb.css" rel="stylesheet">	
 	
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="../assets/css/freelancer.css" rel="stylesheet">
+    <link href="/assets/css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -37,7 +37,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- Ajout d'un bouton de retour -->
-				<a href="../controller/adminPhase.controller.php?idC=<?php echo $_GET['idC'];?>"><button type="button" class="btn btn-primary">Retour</button></a>
+				<a href="/competition/<?php echo $_GET['idC'];?>/phase"><button type="button" class="btn btn-primary">Retour</button></a>
 				<div class="col-lg-12 text-center">
 					<h2>Gestion Matchs</h2>
 					<hr class="star-primary">
@@ -67,21 +67,21 @@
 								echo "<td> $donnees[cote_nul] </td>";
 								echo "<td> $donnees[cote_equipe2] </td>";
 								echo "<td> $donnees[resultat_rencontre] </td>";
-								echo "<td><a href=\"../controller/modifierMatch.controller.php?idM=$donnees[id_rencontre]&idP=";
-								echo $_GET['idP'];
-								echo "&idC=";
+								echo "<td><a href=\"/competition/";
 								echo $_GET['idC'];
-								echo "\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-								echo "<td><a href=\"../controller/supprimerMatch.controller.php?idM=$donnees[id_rencontre]&idP=";
+								echo "/phase/";
 								echo $_GET['idP'];
-								echo "&idC=";
+								echo "/match/$donnees[id_rencontre]/update\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
+								echo "<td><a href=\"/competition/";
 								echo $_GET['idC'];
-								echo "\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
+								echo "/phase/";
+								echo $_GET['idP'];
+								echo "/match/$donnees[id_rencontre]/delete\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
 								echo "</tr>";
 							}						
 							?>
 							<!-- On ajoute un formulaire d'ajout de match sur la dernière ligne-->
-							<form method="post" action="../controller/pageConfirmationAjoutMatch.controller.php?idC=<?php echo $_GET['idC']; ?>&idP=<?php echo $_GET['idP']; ?>">
+							<form method="post" action="/competition/<?php echo $_GET['idC']; ?>/phase/<?php echo $_GET['idP']; ?>/match/add/confirmation">
 								<td><input type="datetime" name="date" id="date" value="2018-10-19 10:00:00"/></td>
 								<td><input type="text" name="nom1" id="nom1" /></td>
 								<td><input type="text" name="nom2" id="nom2" /></td>
@@ -103,16 +103,16 @@
 	<?php include("footer.php"); ?>
 
 	<!-- jQuery -->
-	<script src="../vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/jquery/jquery.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="../js/freelancer.min.js"></script>
+	<script src="/js/freelancer.min.js"></script>
 
 </body>
 

@@ -12,7 +12,7 @@
     if(!isset($_COOKIE["token"])){
 			$menu="menu.php";
             // On le redirige vers la page d'accueil
-            Header('Location:../controller/redirection.php');
+            Header('Location:/redirection');
     }
     else{
 		
@@ -24,18 +24,19 @@
 		$pseudo=$decoded_array['id'];
         if($decoded_array['role']==="joueur"){
 		  $menu="menuJoueur.php";
-          Header('Location:../controller/redirection.php');
+          Header('Location:/redirection');
         }
         else if($decoded_array['role']==="admin"){
 		  $menu="menuAdmin.php";
+		  $compet=getCompetition($_GET['idC']);
           include('../view/supprimerCompetition.php');
         }else{
           // On le redirige vers la page admin
 		  $menu="menu.php";
-          Header('Location:../controller/redirection.php');	
+          Header('Location:/redirection');	
 		}
 	  }else{
-          Header('Location:../controller/redirection.php');
+          Header('Location:/redirection');
 	  }
     }
 ?>

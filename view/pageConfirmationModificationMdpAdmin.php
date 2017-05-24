@@ -30,11 +30,8 @@
 <body id="page-top" class="index">
 
 	<?php 
-	if(isset($menu)){
-		include($menu);
-	}else{
-		include('menu.php');
-	}?>
+		include('menuAdmin.php');
+	?>
 
 	<section id="portfolio">
         <div class="container">
