@@ -27,8 +27,7 @@ if(!isset($_COOKIE["token"])){
 			$menu="menuAdmin.php";
 			include('../view/ajouterAdmin.php');
 		}else{
-			// On le redirige vers la page d'accueil
-			$menu="menu.php";
+			//Sinon on le redirige vers la page d'accueil
 			Header('Location:/redirection');		
 		}
 	}else{

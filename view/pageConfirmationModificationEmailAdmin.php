@@ -6,13 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+	
     <title>Projet Web</title>
 
-    <link href="/assets/css/projetWeb.css" rel="stylesheet">	
-	
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -24,11 +20,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-
 </head>
 
 <body id="page-top" class="index">
 
+	<!-- affichage du menu correspondant à l'utilisateur -->
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -39,6 +35,7 @@
 	<section id="portfolio">
         <div class="container">
             <div class="row">
+				<!-- Ajout bouton retour -->
 				<a href="/admins"><button type="button" class="btn btn-primary">Retour</button></a>
                 <div class="col-lg-12 text-center">
                     <h2>Formulaire modification de l'email</h2>

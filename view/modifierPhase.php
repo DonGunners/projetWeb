@@ -6,13 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Projet Web</title>
 
-    <link href="/assets/css/projetWeb.css" rel="stylesheet">	
-	
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,7 +24,7 @@
 </head>
 
 <body id="page-top" class="index">
-
+	<!-- affichage du menu correspondant à l'utilisateur -->
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -44,12 +40,12 @@
                 <div class="col-lg-12 text-center">
                     <h2>Formulaire modification</h2>
                     <hr class="star-primary">
+					<!-- Création du formulaire de modification de phase -->
 					<form method="post" action="/controller/pageConfirmationModificationPhase.controller.php?idC=<?php echo $_GET['idC']; ?>">
 						<p>
 							<label for="pseudo">Nom phase :</label><br />
 							<input type="text" name="nom" id="nom" value="<?php echo $phase['libelle_phase'];?>"/>
-							<br />
-							<br />
+							<br /><br />
 							<input type='hidden' name='id' value="<?php echo $phase['id_phase'];?>"/>
 							<br />
 							<input type="submit" value="Confirmer" />
@@ -70,10 +66,6 @@
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="/js/jqBootstrapValidation.js"></script>
-    <script src="/js/contact_me.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="/js/freelancer.min.js"></script>

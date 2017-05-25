@@ -13,7 +13,7 @@ $key = "ceSera1cLEPouRPrONos";
 if(!isset($_COOKIE["token"])){
 	$menu="menu.php";
 	// On le redirige vers la page d'accueil
-	Header('Location:../controller/redirection.php');
+	Header('Location:/redirection');
 }else{
 	//On décode le token
 	$decoded = JWT::decode($_COOKIE["token"], $key, array('HS256'));
@@ -35,12 +35,11 @@ if(!isset($_COOKIE["token"])){
 			$cpt=1; //initialisation du compteur du classement
 			include('../view/classement.php');
 		}else{
-			// On le redirige vers la page admin
-			$menu="menu.php";
-			Header('Location:../controller/redirection.php');	
+			// On le redirige vers la page d'accueil
+			Header('Location:/redirection');	
 		}
 	}else{
-		Header('Location:../controller/redirection.php');
+		Header('Location:/redirection');
 	}
 }
 ?>

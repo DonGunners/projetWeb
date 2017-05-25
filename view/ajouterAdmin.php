@@ -11,9 +11,7 @@
 
     <title>Projet Web</title>
 
-    <link href="/assets/css/projetWeb.css" rel="stylesheet">	
-	
-    <!-- Bootstrap Core CSS -->
+	<!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->

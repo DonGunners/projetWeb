@@ -11,7 +11,7 @@ $key = "ceSera1cLEPouRPrONos";
 if(!isset($_COOKIE["token"])){
 	$menu="menu.php";
 	// On le redirige vers la page d'accueil
-	Header('Location:../controller/redirection.php');
+	Header('Location:/redirection');
 }else{
 	//On décode le token
 	$decoded = JWT::decode($_COOKIE["token"], $key, array('HS256'));
@@ -20,18 +20,17 @@ if(!isset($_COOKIE["token"])){
 	if (verificationToken($decoded_array)){
 		//si c'est un joueur on le redirige vers la page d'accueil
 		if($decoded_array['role']==="joueur"){
-			Header('Location:../controller/redirection.php');
+			Header('Location:/redirection');
 		//si c'est un admin on affiche la page
 		}else if($decoded_array['role']==="admin"){
 			$menu="menuAdmin.php";
 			include('../view/ajouterCompetition.php');
 		}else{
-			// On le redirige vers la page d'accueil
-			$menu="menu.php";
-			Header('Location:../controller/redirection.php');		
+			//Sinon on le redirige vers la page d'accueil
+			Header('Location:/redirection');		
 		}
 	}else{
-		Header('Location:../controller/redirection.php');
+		Header('Location:/redirection');
 	}
 }
 ?>

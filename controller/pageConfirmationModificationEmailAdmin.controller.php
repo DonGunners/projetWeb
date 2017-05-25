@@ -9,17 +9,18 @@ use \Firebase\JWT\JWT;
 $key = "ceSera1cLEPouRPrONos";
 $keyCryptage= "ProJEtWe5";
 
-//On vérifie que l'utilisateur n'est pas déjà connecté
+//On vérifie que l'utilisateur est connecté
 if(isset($_COOKIE["token"])){
 	//On décode le token
 	$decoded = JWT::decode($_COOKIE["token"], $key, array('HS256'));
 	$decoded_array = (array) $decoded;
+	//On vérifie le contenu du token
 	if (verificationToken($decoded_array)){
-		$pseudo=$decoded_array['id'];
 		if($decoded_array['role']==="joueur"){
+			//Si c'est un joueur on le redirige vers l'accueil
 			Header('Location:/redirection');
 		}else if($decoded_array['role']==="admin"){
-			$menu="menuAdmin.php";
+			//Si c'est un admin on effectue les tests
 			//On vérifie que les champs ne soient pas vide et non null.
 			if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email'])
 			&& !empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['email'])){
@@ -27,31 +28,35 @@ if(isset($_COOKIE["token"])){
 				$pseudo = htmlspecialchars ($_POST['pseudo']);
 				$password = htmlspecialchars ($_POST['password']);
 				$email = htmlspecialchars ($_POST['email']);
+				//Vérification de la validité de l'email
 				if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 					//On crypte le mot de passe avec un "grain de sel"
 					$password = crypt($password,$keyCryptage);
 					$truePassword=getMdpAdmin($pseudo);
+					//On vérifie que le mot de passe est bon
 					if($password===$truePassword){
+						//modification email
 						ModifierEmailAdmin($pseudo,$email);
 						Header('Location:/admins/update/email/confirmation');
 					}else{
+						echo "mot de passe incorrecte";
 						Header('Location:/admins/update/email');			
 					}
 				}else{
+					echo "email invalide";
 					Header('Location:/admins/update/email');			
 				}
 			}else{
+				echo "champs vide";
 				Header('Location:/admins/update/email');
 			}
 		}else{
-			Header('Location:/admins/update/email');
+			Header('Location:/redirection');
 		}
 	}else{
-		// Cas où la personne passe directement ici par l'url et n'est pas connecté
-		header('Location:/admins/update/email');
+		header('Location:/redirection');
 	}
 }else{
-	// Cas où la personne passe directement ici par l'url et n'est pas connecté
 	header('Location:/redirection');
 }
 ?>

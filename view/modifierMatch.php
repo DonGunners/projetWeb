@@ -6,13 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+	
     <title>Projet Web</title>
 
-    <link href="/assets/css/projetWeb.css" rel="stylesheet">	
-	
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,7 +24,7 @@
 </head>
 
 <body id="page-top" class="index">
-
+	<!-- affichage du menu correspondant à l'utilisateur -->
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -44,6 +40,7 @@
                 <div class="col-lg-12 text-center">
                     <h2>Formulaire modification</h2>
                     <hr class="star-primary">
+					<!-- Création du formulaire de modification de match -->
 					<form method="post" action="/controller/pageConfirmationModificationMatch.controller.php?idP=<?php echo $_GET['idP']; ?>&idC=<?php echo $_GET['idC']; ?>">
 						<label for="pseudo">Date Match :</label><br />
 						<input type="datetime" name="date" id="date" value="<?php echo $match[0]['date_rencontre'];?>"/><br />

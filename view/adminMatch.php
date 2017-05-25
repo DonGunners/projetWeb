@@ -8,8 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Projet Web</title>
-
-    <link href="/assets/css/projetWeb.css" rel="stylesheet">	
 	
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,60 +39,62 @@
 				<div class="col-lg-12 text-center">
 					<h2>Gestion Matchs</h2>
 					<hr class="star-primary">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-							<th>Date Match</th>
-							<th>Equipe Domicile</th>
-							<th>Equipe Extérieur</th>
-							<th>cote 1</th>
-							<th>cote N</th>
-							<th>cote 2</th>
-							<th>Résultat</th>
-							<th>Modifier</th>
-							<th>Supprimer</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							//Pour chaque match on récupère les données et on les affiche
-							while($donnees=$listeMatchs->fetch()){
-								echo "<tr>";
-								echo "<td> $donnees[date_rencontre] </td>";
-								echo "<td> $donnees[nom_equipe1] </td>";
-								echo "<td> $donnees[nom_equipe2] </td>";
-								echo "<td> $donnees[cote_equipe1] </td>";
-								echo "<td> $donnees[cote_nul] </td>";
-								echo "<td> $donnees[cote_equipe2] </td>";
-								echo "<td> $donnees[resultat_rencontre] </td>";
-								echo "<td><a href=\"/competition/";
-								echo $_GET['idC'];
-								echo "/phase/";
-								echo $_GET['idP'];
-								echo "/match/$donnees[id_rencontre]/update\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
-								echo "<td><a href=\"/competition/";
-								echo $_GET['idC'];
-								echo "/phase/";
-								echo $_GET['idP'];
-								echo "/match/$donnees[id_rencontre]/delete\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
-								echo "</tr>";
-							}						
-							?>
-							<!-- On ajoute un formulaire d'ajout de match sur la dernière ligne-->
-							<form method="post" action="/competition/<?php echo $_GET['idC']; ?>/phase/<?php echo $_GET['idP']; ?>/match/add/confirmation">
-								<td><input type="datetime" name="date" id="date" value="2018-10-19 10:00:00"/></td>
-								<td><input type="text" name="nom1" id="nom1" /></td>
-								<td><input type="text" name="nom2" id="nom2" /></td>
-								<td><input type="text" name="cote1" id="cote1" size="4"/></td>
-								<td><input type="text" name="coteNul" id="coteN" size="4"/></td>
-								<td><input type="text" name="cote2" id="cote2" size="4"/></td>
-								<td><input type="submit" value="Confirmer" /></td>
-								<td></td>
-								<td></td>
-								<input type="hidden" name="id_phase" id="id_phase" value="<?php echo $_GET['idP']; ?>"/>
-							</form>
-						</body>
-					</table>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+								<th>Date Match</th>
+								<th>Equipe Domicile</th>
+								<th>Equipe Extérieur</th>
+								<th>cote 1</th>
+								<th>cote N</th>
+								<th>cote 2</th>
+								<th>Résultat</th>
+								<th>Modifier</th>
+								<th>Supprimer</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								//Pour chaque match on récupère les données et on les affiche
+								while($donnees=$listeMatchs->fetch()){
+									echo "<tr>";
+									echo "<td> $donnees[date_rencontre] </td>";
+									echo "<td> $donnees[nom_equipe1] </td>";
+									echo "<td> $donnees[nom_equipe2] </td>";
+									echo "<td> $donnees[cote_equipe1] </td>";
+									echo "<td> $donnees[cote_nul] </td>";
+									echo "<td> $donnees[cote_equipe2] </td>";
+									echo "<td> $donnees[resultat_rencontre] </td>";
+									echo "<td><a href=\"/competition/";
+									echo $_GET['idC'];
+									echo "/phase/";
+									echo $_GET['idP'];
+									echo "/match/$donnees[id_rencontre]/update\"><button type=\"button\" class=\"btn btn-warning\">Modifier</button></a></td>";
+									echo "<td><a href=\"/competition/";
+									echo $_GET['idC'];
+									echo "/phase/";
+									echo $_GET['idP'];
+									echo "/match/$donnees[id_rencontre]/delete\"><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></a></td>";
+									echo "</tr>";
+								}						
+								?>
+								<!-- On ajoute un formulaire d'ajout de match sur la dernière ligne-->
+								<form method="post" action="/competition/<?php echo $_GET['idC']; ?>/phase/<?php echo $_GET['idP']; ?>/match/add/confirmation">
+									<td><input type="datetime" name="date" id="date" value="2018-10-19 10:00:00"/></td>
+									<td><input type="text" name="nom1" id="nom1" /></td>
+									<td><input type="text" name="nom2" id="nom2" /></td>
+									<td><input type="text" name="cote1" id="cote1" size="4"/></td>
+									<td><input type="text" name="coteNul" id="coteN" size="4"/></td>
+									<td><input type="text" name="cote2" id="cote2" size="4"/></td>
+									<td><input type="submit" value="Confirmer" /></td>
+									<td></td>
+									<td></td>
+									<input type="hidden" name="id_phase" id="id_phase" value="<?php echo $_GET['idP']; ?>"/>
+								</form>
+							</body>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

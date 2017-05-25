@@ -6,8 +6,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Projet Web</title>
 
@@ -22,12 +20,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-
 </head>
 
 <body id="page-top" class="index">
 
-
+	<!--Affichage du menu correspondant à l'utilisateur -->
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -35,11 +32,11 @@
 		include('menu.php');
 	}?>
 
-
 	<section id="portfolio">
         <div class="container">
             <div class="row">
                 <p>Ajout effectué !</p><br />
+				<!-- Ajout bouton de retour -->
 				<a href="/competition/<?php echo $_GET['idC']; ?>/phase"><button type="button" class="btn btn-primary">Retour</button></a>
             </div>
         </div>

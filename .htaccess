@@ -2,6 +2,7 @@ Options +FollowSymlinks
 RewriteEngine on
 RewriteRule ^index.html$ /controller/pageAccueil.controller.php [L]
 RewriteRule ^inscription$ /controller/pageInscription.controller.php [L]
+RewriteRule ^inscription/confirmation$ /controller/pageConfirmationInscription.controller.php [L]
 RewriteRule ^accueil$ /controller/pageAccueil.controller.php [L]
 RewriteRule ^connexion$ /controller/pageConnexion.controller.php [L]
 RewriteRule ^pronostics$ /controller/pagePronostics.controller.php [L]

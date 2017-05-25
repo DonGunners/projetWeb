@@ -21,7 +21,6 @@ if(!isset($_COOKIE["token"])){
 	if (verificationToken($decoded_array)){
 		//Si c'est un joueur on le redirige vers la page d'accueil
 		if($decoded_array['role']==="joueur"){
-			$menu="menuJoueur.php";
 			Header('Location:/redirection');
 		//Si c'est un admin on récupère la liste des matchs de la phase
 		}else if($decoded_array['role']==="admin"){
@@ -30,7 +29,6 @@ if(!isset($_COOKIE["token"])){
 			include('../view/adminMatch.php');
 		}else{
 			//Sinon on le redirige vers la page d'accueil
-			$menu="menu.php";
 			Header('Location:/redirection');	
 		}
 	}else{
