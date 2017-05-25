@@ -43,7 +43,7 @@ if(isset($_COOKIE["token"])){
 						Header('Location:/profil/mdp');			
 					}
 				}else{
-					echo "les deux mdp ne sont pas égaux"
+					echo "les deux mdp ne sont pas égaux";
 					Header('Location:/profil/mdp');			
 				}
 			}else{

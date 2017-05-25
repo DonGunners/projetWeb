@@ -35,9 +35,16 @@ if(isset($_COOKIE["token"])){
 					$truePassword=getMdpAdmin($pseudo);
 					//On vérifie que le mot de passe est bon
 					if($password===$truePassword){
-						//modification email
-						ModifierEmailAdmin($pseudo,$email);
-						Header('Location:/admins/update/email/confirmation');
+						//on vérifie si le mail n'existe pas déjà
+						$id=existeEmailAdmin($email);
+						if(!$id>0){
+							//modification email
+							ModifierEmailAdmin($pseudo,$email);
+							Header('Location:/admins/update/email/confirmation');
+						}else{
+							echo "email déjà pris";
+							Header('Location:/admins/update/email');
+						}
 					}else{
 						echo "mot de passe incorrecte";
 						Header('Location:/admins/update/email');			

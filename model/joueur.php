@@ -15,6 +15,21 @@ function existeJoueur($pseudo,$email){
 		return $id[0];
 }
 
+function existeEmailJoueur($email){
+	//donnée : l'email d'un joueur
+	//résultat : l'id d'un joueur si le mail existe déjà
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT id_joueur FROM joueur WHERE email_joueur=?;');
+			$req->execute(array($email));
+			$id=$req->fetch();
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die("Erreur lors de la requete");
+		}
+		return $id[0];
+}
+
 function connexionJoueur($pseudo,$password){
 	//donnée : pseudo et mdp d'un joueur ou admin
 	//résultat : pseudo et role du joueur ou admin

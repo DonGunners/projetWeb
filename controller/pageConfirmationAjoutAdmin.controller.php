@@ -7,6 +7,7 @@ use \Firebase\JWT\JWT;
 
 //TODO: mettre dans un fichier .env
 $key = "ceSera1cLEPouRPrONos";
+$keyCryptage= "ProJEtWe5";
 
 //On vérifie que l'utilisateur est connecté
 if(!isset($_COOKIE["token"])){

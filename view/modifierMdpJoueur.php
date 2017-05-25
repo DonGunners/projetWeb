@@ -38,7 +38,7 @@
                     <h2>Formulaire modification du mot de passe</h2>
                     <hr class="star-primary">
 					<!-- Création du formulaire de modification du mdp joueur -->
-					<form method="post" action="../controller/pageConfirmationModificationMdpJoueur.controller.php">
+					<form method="post" action="/controller/pageConfirmationModificationMdpJoueur.controller.php">
 						<p>
 							<label for="pseudo"> Ancien mot de passe :</label><br />
 							<input type="password" name="oldPassword" id="oldPassword" value=""/>

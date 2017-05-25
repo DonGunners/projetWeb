@@ -32,9 +32,16 @@ if(isset($_COOKIE["token"])){
 					$truePassword=getMdpJoueur($pseudo);
 					//On vérifie que le mdp est bon
 					if($password===$truePassword){
-						//Modification de l'email
-						ModifierEmailJoueur($pseudo,$email);
-						Header('Location:/profil/email/confirmation');
+						//on vérifie si le mail n'existe pas déjà
+						$id=existeEmailJoueur($email);
+						if(!$id>0){
+							//Modification de l'email
+							ModifierEmailJoueur($pseudo,$email);
+							Header('Location:/profil/email/confirmation');
+						}else{
+							echo "email déjà pris";
+							Header('Location:/profil/email');						
+						}
 					}else{
 						echo "mot de passe incorrecte";
 						Header('Location:/profil/email');			

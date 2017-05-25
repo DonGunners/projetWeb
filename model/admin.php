@@ -30,6 +30,21 @@ function existeAdmin($pseudo,$email){
 		return $id[0];
 }
 
+function existeEmailAdmin($email){
+	//donnée : l'email d'un admin
+	//résultat : l'id d'un admin si le mail existe déjà
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT id_admin FROM administrateur WHERE email_admin=?;');
+			$req->execute(array($email));
+			$id=$req->fetch();
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die("Erreur lors de la requete");
+		}
+		return $id[0];
+}
+
 function ajoutAdmin($pseudo,$password,$email){
 	//donnée : pseudo, mdp et email du futur admin
 	//résultat : ajout de l'admin dans la bd
