@@ -6,8 +6,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>Projet Web</title>
 
@@ -29,6 +27,7 @@
 
 <body id="page-top" class="index">
 
+	<!-- Affichage du menu correspondant à l'utilisateur -->
 	<?php 
 	if(isset($menu)){
 		include($menu);
@@ -40,6 +39,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+					<!-- Affichage du message de confirmation suppression -->
                     <h2>Gestion Admins</h2>
                     <hr class="star-primary">
 					<p>Voulez-vous vraiment supprimer l'admin : <br />

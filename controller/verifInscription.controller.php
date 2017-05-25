@@ -2,7 +2,6 @@
 require_once('../model/connexionBD.php');
 require_once('../model/joueur.php');
 
-
 //TODO : mettre ces variables dans un fichier .env
 $key = "ceSera1cLEPouRPrONos";
 $keyCryptage= "ProJEtWe5";
@@ -19,29 +18,32 @@ if(!isset($_COOKIE["token"])){
         $email = htmlspecialchars ($_POST['email']);
 	    //vérifie que le mot de passe et sa confirmation son égaux
 		if($password==$password2){
-
-			//vérifie que l'email est bien de la forme prenom.nom@etu.umontpellier.Fr
+			//vérifie que l'email est de la bonne forme
 			if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 		      	//On crypte le mot de passe avec un "grain de sel"
           		$password = crypt($password,$keyCryptage);
           		$id=existeJoueur($pseudo,$email);
-				//On vérifie que l'étudiant n'est pas déjà dans la base de données
+				//On vérifie que le joueur n'est pas déjà dans la base de données
 				if(!$id>0){
 			        ajoutJoueur($pseudo,$password,$email);
 				    header('Location:../view/pageConfirmationInscription.php');
 				}else{
-				    echo 'ERREUR : un compte pour cet étudiant existe déjà';
+				    echo "un compte pour ce joueur existe déjà";
+					header('Location:/redirection');
 				}
 			}else{
-				echo 'ERREUR : l\'email n\'a pas la forme d\'un email';
+				echo "mauvaise forme de l'email";
+				header('Location:/redirection');
 		    }
         }else{
-			echo 'ERREUR : les deux mots de passe ne correspondent pas';
+			echo "les deux mots de passe ne correspondent pas";
+			header('Location:/redirection');
         }
     }else{
-		echo 'ERREUR : un des champs est vide';
+		echo "un des champs est vide";
+		header('Location:/redirection');
     }
 }else{
-	header('Location:../controller/redirection.php');
+	header('Location:/redirection');
 }
 ?>

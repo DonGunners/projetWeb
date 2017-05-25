@@ -1,10 +1,8 @@
 <?php
 
 function existeJoueur($pseudo,$email){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo et email d'un joueur
+	//résultat : id du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT id_joueur FROM joueur WHERE pseudo_joueur=? OR email_joueur=?;');
@@ -12,16 +10,14 @@ function existeJoueur($pseudo,$email){
 			$id=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		return $id[0];
 }
 
 function connexionJoueur($pseudo,$password){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo et mdp d'un joueur ou admin
+	//résultat : pseudo et role du joueur ou admin
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT pseudo_admin FROM administrateur WHERE pseudo_admin=? AND mdp_admin=?;');
@@ -29,7 +25,7 @@ function connexionJoueur($pseudo,$password){
 			$id=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		
 		if(empty($id)){
@@ -40,7 +36,7 @@ function connexionJoueur($pseudo,$password){
 				$id=$req->fetch();
 			}catch(PDOException $e){
 				echo($e->getMessage());
-				die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 			}
 			
 			$id[1]="joueur";
@@ -52,53 +48,49 @@ function connexionJoueur($pseudo,$password){
 }
 
 function ajoutJoueur($pseudo,$password,$email){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo, mdp et email d'un joueur 
+	//résultat : ajout du joueur à la bd
 		global $pdo;
 		try{
 			$req=$pdo->prepare('INSERT INTO joueur (pseudo_joueur,mdp_joueur,email_joueur) VALUES (?,?,?)');
 			$req->execute(array($pseudo,$password,$email));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 }
 
 function listeJoueurs(){
-	global $pdo;
-	try{
-		$req=$pdo->prepare('SELECT * FROM joueur');
-		$req->execute();
-		$liste=$req;
-	}catch(PDOException $e){
-		echo($e->getMessage());
-		die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
-	}
-	return $liste;
+	//donnée : 
+	//résultat : toutes les informations de tous les joueurs
+		global $pdo;
+		try{
+			$req=$pdo->prepare('SELECT * FROM joueur');
+			$req->execute();
+			$liste=$req;
+		}catch(PDOException $e){
+			echo($e->getMessage());
+			die("Erreur lors de la requete");
+		}
+		return $liste;
 }
 
 function supprimerJoueur($id){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id d'un joueur 
+	//résultat : suppression du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('DELETE FROM joueur WHERE id_joueur=?;');
 			$req->execute(array($id));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 }
 
 function getIdJoueur($pseudo){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo d'un joueur
+	//résultat : id du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT id_joueur FROM joueur WHERE pseudo_joueur=?;');
@@ -106,16 +98,14 @@ function getIdJoueur($pseudo){
 			$pseudo=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		return $pseudo[0];
 }
 
 function getPseudoJoueur($id){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id d'un joueur
+	//résultat : pseudo du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT pseudo_joueur FROM joueur WHERE id_joueur=?;');
@@ -123,16 +113,14 @@ function getPseudoJoueur($id){
 			$pseudo=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		return $pseudo;
 }
 
 function getJoueur($pseudo){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo d'un joueur 
+	//résultat : toutes les informations du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT * FROM joueur WHERE pseudo_joueur=?;');
@@ -140,13 +128,14 @@ function getJoueur($pseudo){
 			$pseudo=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		return $pseudo;
 }
 
 function classement(){
-
+	//donnée : 
+	//résultat : liste des joueurs et leur total de points 
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT pseudo_joueur, ROUND(SUM(cote1),2) AS total FROM((SELECT SUM(m.cote_equipe1) AS cote1, j.pseudo_joueur
@@ -172,14 +161,15 @@ function classement(){
 			$liste=$req;
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		return $liste;
 }
 
 function getScore($pseudo,$compet){
-	
-	global $pdo;
+	//donnée : pseudo d'un joueur et nom d'une competition
+	//résultat : score du joueur dans la compétition
+		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT ROUND(SUM(cote1),2) AS total FROM((SELECT SUM(m.cote_equipe1) AS cote1, j.pseudo_joueur
 				FROM rencontre m, pronostic p, joueur j, phase ph, competition c
@@ -204,16 +194,14 @@ function getScore($pseudo,$compet){
 			$liste=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		return $liste[0];
 }
 
 function getMdpJoueur($pseudo){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo d'un joueur
+	//résultat : mdp du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT mdp_joueur FROM joueur WHERE pseudo_joueur=?');
@@ -221,39 +209,35 @@ function getMdpJoueur($pseudo){
 			$mdp=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 		
 		return $mdp[0];
 }
 
 function modifierMdpJoueur($pseudo,$mdp){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo et nouveau mdp d'un joueur
+	//résultat : modification du mot de passe du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('UPDATE joueur SET mdp_joueur=? WHERE pseudo_joueur=?');
 			$req->execute(array($mdp,$pseudo));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 }
 
 function modifierEmailJoueur($pseudo,$email){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : pseudo et nouvel email d'un joueur 
+	//résultat : modification de l'email du joueur
 		global $pdo;
 		try{
 			$req=$pdo->prepare('UPDATE joueur SET email_joueur=? WHERE pseudo_joueur=?');
 			$req->execute(array($email,$pseudo));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die("Erreur lors de la requete");
 		}
 }
 

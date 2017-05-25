@@ -1,10 +1,8 @@
 <?php
 
 function listeCompetition(){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : 
+	//résultat : toutes les informations de toutes les compétitions
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT * FROM competition;');
@@ -12,16 +10,14 @@ function listeCompetition(){
 			$liste=$req;
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 		return $liste;
 }
 
 function getCompetition($id){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id d'une compétition
+	//résultat : toutes les informations de cette compétition
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT * FROM competition WHERE id_competition=?;');
@@ -29,53 +25,47 @@ function getCompetition($id){
 			$compet=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 		return $compet;
 }
 
 function modifierCompetition($id,$nom,$image){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id, nouveau nom et nouvelle image d'une compétition
+	//résultat : la modification de la compétition
 		global $pdo;
 		try{
 			$req=$pdo->prepare('UPDATE competition SET nom_competition=?,image_competition=? WHERE id_competition=?;');
 			$req->execute(array($nom,$image,$id));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 }
 
 function supprimerCompetition($id){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id d'une compétition
+	//résultat : suppression de la compétition
 		global $pdo;
 		try{
 			$req=$pdo->prepare('DELETE FROM competition WHERE id_competition=?;');
 			$req->execute(array($id));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 }
 
 function ajouterCompetition($nom,$image){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : nom et image d'une compétition
+	//résultat : ajout de la compétition dans la bd
 		global $pdo;
 		try{
 			$req=$pdo->prepare('INSERT INTO competition (nom_competition, image_competition) VALUES (?,?);');
 			$req->execute(array($nom,$image));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 }
 

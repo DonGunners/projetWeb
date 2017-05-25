@@ -1,10 +1,8 @@
 <?php
 
 function listePhaseCompetition($id){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id d'une phase
+	//résultat : toutes les informations des phases de la compétition
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT * FROM phase WHERE id_competition=?;');
@@ -12,32 +10,28 @@ function listePhaseCompetition($id){
 			$liste=$req;
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 		return $liste;
 }
 
 
 function ajouterPhase($id,$nom){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id et nom d'une phase
+	//résultat : ajout de la phase
 		global $pdo;
 		try{
 			$req=$pdo->prepare('INSERT INTO phase (id_competition,libelle_phase) VALUES (?,?);');
 			$req->execute(array($id,$nom));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 }
 
 function getPhase($id){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id d'une phase 
+	//résultat : toutes les informations de la phase 
 		global $pdo;
 		try{
 			$req=$pdo->prepare('SELECT * FROM phase WHERE id_phase=?;');
@@ -45,38 +39,34 @@ function getPhase($id){
 			$phase=$req->fetch();
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 		return $phase;
 }
 
 function modifierPhase($id,$nom){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id et nouveau nom d'une phase
+	//résultat : modification du nom de la phase 
 		global $pdo;
 		try{
 			$req=$pdo->prepare('UPDATE phase SET libelle_phase=? WHERE id_phase=?;');
 			$req->execute(array($nom,$id));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 }
 
 function supprimerPhase($id){
-	//donnée : email de l'étudiant et son mot de passe crypté 
-	//pré : email : String / password : String 
-	//résultat : id de l'étudiant s'il existe, NULL sinon 
-	//post : id : entier >0
+	//donnée : id d'une phase
+	//résultat : suppression de la phase
 		global $pdo;
 		try{
 			$req=$pdo->prepare('DELETE FROM phase WHERE id_phase=?;');
 			$req->execute(array($id));
 		}catch(PDOException $e){
 			echo($e->getMessage());
-			die(" Erreur lors de la vérification de l'existence de l'étudiant dans la base de données " );
+			die(" Erreur lors de la requete" );
 		}
 }
 
